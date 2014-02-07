@@ -13,6 +13,7 @@
   "Loads and returns the initial application state"
   []
   {:navigation :all
+   :current-input nil
    :items [(item "Hello, world!")
            (item "Another item.")]})
 

@@ -6,32 +6,30 @@
 
 (q/defcomponent Header
   "The page's header, which includes the primary input"
-  []
+  [[_ input-channel]]
   (d/header {:id "header"}
             (d/h1 {} "todos")
             (d/input {:id "new-todo"
                       :placeholder "What needs to be done?"
                       :onChange (fn [evt]
-                                  (.log js/console (-> evt .-target .-value)))
+                                  (let [v (.-value (.-target evt))]
+                                    (am/go (a/>! input-channel v))))
                       :autoFocus true})))
+
+(q/defcomponent NavItem
+  "A navigation button"
+  [[current-nav label href]]
+  (d/li {} (d/a {:className (when current-nav "selected")
+                 :href href}
+                label)))
 
 (q/defcomponent Filters
   "Buttons to filter the list"
   [nav]
   (d/ul {:id "filters"}
-        (d/li {} (d/a {:className (when (= :all nav)
-                                    "selected")
-                       :href "#/"}
-                      "All"))
-        (d/li {} (d/a {:className (when (= :active nav)
-                                    "selected")
-                       :href "#/active"}
-                      "Active"))
-        (d/li {} (d/a {:className (when (= :completed nav)
-                                         "selected")
-                       :href "#/completed"}
-                      "Completed"))))
-
+        (NavItem [(= :all nav) "All" "#/"])
+        (NavItem [(= :active nav) "Active" "#/active"])
+        (NavItem [(= :completed nav) "Completed" "#/completed"])))
 
 (q/defcomponent Footer
   "The footer at the bottom of the list"
@@ -67,9 +65,10 @@
 
 (q/defcomponent App
   "The root of the application"
-  [app]
+  [[app channels]]
   (d/div {}
-         (Header nil)
+         (d/div {} (:current-input app))
+         (Header [nil (:input channels)])
          (d/section {:id "main"}
                     (d/input {:id "toggle-all"
                               :type "checkbox"
@@ -82,10 +81,10 @@
 (defn render
   "Render the given application. Takes a map of input channels as its
   second argument."
-  [app]
+  [app channels]
   (let [root-element (.getElementById js/document "todoapp")]
     (.requestAnimationFrame js/window
                             (fn []
-                              (q/render (App app) root-element)))))
+                              (q/render (App [app channels]) root-element)))))
 
 
