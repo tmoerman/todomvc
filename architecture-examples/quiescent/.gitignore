@@ -1,3 +1,5 @@
 .lein-repl-history
 target/
 resources/public/build/
+checkouts/
+.nrepl-port

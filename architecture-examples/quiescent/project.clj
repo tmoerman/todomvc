@@ -12,10 +12,11 @@
               [{:source-paths ["src"]
                 :compiler
                 {:output-to "resources/public/build/main.js"
-                 :output-dir "resources/public/build/work"
-                 :optimizations :none
+                 :output-dir "resources/public/build/build"
+                 :optimizations :whitespace
                  :pretty-print true
-                 :source-map true}}
+                 :source-map "resources/public/build/main.js.map"
+                 }}
                {:source-paths ["src"]
                 :compiler
                 {:output-to "resources/public/build/main-prod.js"

@@ -1,10 +1,11 @@
 (ns todomvc-quiescent.serve
-  (:require [ring.middleware.file :as file]
-            [ring.middleware.content-type :as ct]
-            [ring.middleware.not-modified :as nm]))
+  "Server for the todomvc app. Not necessary if demoing client-side
+   pieces only."
+  (:require [ring.middleware.resource :as resource]
+            [ring.middleware.file-info :as fi]))
 
 (def handler
   (-> (fn [_] nil)
-      (file/wrap-file "resources/public/")
-      (ct/wrap-content-type)
-      (nm/wrap-not-modified)))
+      (resource/wrap-resource "public")
+      (fi/wrap-file-info)))
+
