@@ -3,3 +3,4 @@ target/
 checkouts/
 .nrepl-port
 generated
+debug

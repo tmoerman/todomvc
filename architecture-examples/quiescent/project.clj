@@ -8,8 +8,9 @@
                  [org.clojars.franks42/cljs-uuid-utils "0.1.3"]
                  [ring "1.2.1"]]
   :ring {:handler todomvc-quiescent.serve/handler}
-  ;; Note - it is not idiomatic to compile to, or serve from, the project
-  ;; root but TodoMVC seems to want it.
+  ;; Note: it is not idiomatic to compile to, or serve from, the
+  ;; project root but TodoMVC wants the index.html there, so we'll
+  ;; adjust
   :cljsbuild {:builds
               {:dev {:source-paths ["src"]
                      :compiler

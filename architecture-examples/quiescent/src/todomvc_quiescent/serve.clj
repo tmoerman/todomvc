@@ -6,5 +6,5 @@
 
 (def handler
   (-> (fn [_] nil)
-      (resource/wrap-file ".")
+      (file/wrap-file "../../")
       (fi/wrap-file-info)))
