@@ -4,7 +4,7 @@
             [cljs.core.async :as a]
             [todomvc-quiescent.render :as render]
             [todomvc-quiescent.data :as data]
-            [todomvc-quiescent.updates :as updates])
+            [todomvc-quiescent.store :as store])
   (:require-macros [cljs.core.async.macros :as am]))
 
 (defn init-history
@@ -19,10 +19,10 @@
                   (.setToken h token)
                   (am/go (a/>! ch token)))))))
 
-(defn init-app
-  "Return a map containing a fresh application"
+(defn load-app
+  "Return a map containing the initial application"
   []
-  {:state (atom (data/init))
+  {:state (atom (or (store/load) (data/fresh)))
    :channels {:nav (a/chan)
               :submit (a/chan)
               :destroy (a/chan)
@@ -47,15 +47,17 @@
   (doseq [[ch update-fn] (:consumers app)]
     (am/go (while true
              (let [val (a/<! (get (:channels app) ch))
+                   _ (.log js/console (str "on channel [" ch "], recieved value [" val "]"))
                    new-state (swap! (:state app) update-fn val)]
-               (render/render new-state (:channels app)))))))
+               (render/request-render app))))))
 
 (defn ^:export main
   "Application entry point"
   []
-  (let [app (init-app)]
+  (let [app (load-app)]
+    (store/init-persistence app)
     (init-history app)
     (init-updates app)
-    (render/render @(:state app) (:channels app))))
+    (render/request-render app)))
 
 

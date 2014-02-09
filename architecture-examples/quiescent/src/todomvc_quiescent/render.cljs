@@ -4,7 +4,10 @@
             [quiescent.dom :as d])
   (:require-macros [cljs.core.async.macros :as am]))
 
-(def enter-key 13)
+(defn enter-key?
+  "Return true if an event was the enter key"
+  [evt]
+  (= 13 (.-keyCode evt)))
 
 (q/defcomponent Header
   "The page's header, which includes the primary input"
@@ -15,7 +18,7 @@
                       :placeholder "What needs to be done?"
                       :onKeyDown
                       (fn [evt]
-                        (if (= 13 (.-keyCode evt))
+                        (when (enter-key? evt)
                           (let [v (.-value (.-target evt))]
                             (am/go (a/>! submit-ch v))
                             (set! (.-value (.-target evt)) ""))))
@@ -89,20 +92,16 @@
                             (fn [_]
                               (am/go (a/>! (:destroy channels)
                                            (:id item))))}))
-          (let [complete-edit (fn [evt]
-                                (let [v (.-value (.-target evt))]
-                                  (am/go (a/>! (:complete-edit channels)
-                                               [(:id item) v]))))]
-            (q/on-render
-             (d/input {:className "edit"
-                       :defaultValue (:text item)
-                       :onKeyDown (fn [evt]
-                                    (when (= 13 (.-keyCode evt))
-                                      (complete-edit evt)))
-                       :onBlur complete-edit})
-             (fn [node]
-               (when (:editing item) (.focus node))))))))
-
+          (q/on-render (d/input {:className "edit"
+                                 :defaultValue (:text item)
+                                 :onKeyDown (fn [evt] (when (enter-key? evt)
+                                                        (.blur (.-target evt))))
+                                 :onBlur (fn [evt]
+                                           (let [v (.-value (.-target evt))]
+                                             (am/go (a/>! (:complete-edit channels)
+                                                          [(:id item) v]))))})
+                       (fn [node]
+                         (when (:editing item) (.focus node)))))))
 (q/defcomponent TodoList
   "The primary todo list"
   [app channels]
@@ -123,13 +122,17 @@
                     (TodoList app channels))
          (Footer app channels)))
 
-(defn render
-  "Render the given state tree. Takes a map of input channels as its
-  second argument."
-  [app channels]
-  (let [root-element (.getElementById js/document "todoapp")]
-    (.requestAnimationFrame js/window
-                            (fn []
-                              (q/render (App app channels) root-element)))))
+;; Here we use an atom to tell us if we already have a render queued
+;; up; if so, requesting another render is a no-op
+(let [render-pending? (atom false)]
+  (defn request-render
+    "Render the given application state tree."
+    [app]
+    (when (compare-and-set! render-pending? false true)
+      (.requestAnimationFrame js/window
+                              (fn []
+                                (q/render (App @(:state app) (:channels app))
+                                          (.getElementById js/document "todoapp"))
+                                (reset! render-pending? false))))))
 
 

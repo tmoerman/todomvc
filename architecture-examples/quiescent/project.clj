@@ -8,21 +8,22 @@
                  [org.clojars.franks42/cljs-uuid-utils "0.1.3"]
                  [ring "1.2.1"]]
   :ring {:handler todomvc-quiescent.serve/handler}
+  ;; Note - it is not idiomatic to compile to, or serve from, the project
+  ;; root but TodoMVC seems to want it.
   :cljsbuild {:builds
-              [{:source-paths ["src"]
-                :compiler
-                {:output-to "resources/public/build/main.js"
-                 :output-dir "resources/public/build/build"
-                 :optimizations :whitespace
-                 :pretty-print true
-                 :source-map "resources/public/build/main.js.map"
-                 }}
-               {:source-paths ["src"]
-                :compiler
-                {:output-to "resources/public/build/main-prod.js"
-                 :optimizations :advanced
-                 :preamble ["react/react.min.js"]
-                 :externs ["react/externs/react.js"]
-                 :pretty-print false
-                 :closure-warnings {:non-standard-jsdoc :off}}}]})
+              {:dev {:source-paths ["src"]
+                     :compiler
+                     {:output-dir "generated"
+                      :output-to "generated/main-dev.js"
+                      :optimizations :none
+                      :source-map true
+                      }}
+               :prod {:source-paths ["src"]
+                      :compiler
+                      {:output-to "main.js"
+                       :optimizations :advanced
+                       :preamble ["react/react.min.js"]
+                       :externs ["react/externs/react.js"]
+                       :pretty-print true
+                       :closure-warnings {:non-standard-jsdoc :off}}}}})
 

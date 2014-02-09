@@ -76,11 +76,8 @@
                         item))
                     items))))
 
-(defn init
-  "Loads and returns the initial application state"
+(defn fresh
+  "Returns a new, empty application state."
   []
   {:filter :all
-   :items [(new-item "Hello, world!")
-           (new-item "Another item.")]})
-
-
+   :items []})
