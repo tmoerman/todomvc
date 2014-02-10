@@ -25,6 +25,6 @@
                        :optimizations :advanced
                        :preamble ["react/react.min.js"]
                        :externs ["react/externs/react.js"]
-                       :pretty-print true
+                       :pretty-print false
                        :closure-warnings {:non-standard-jsdoc :off}}}}})
 
