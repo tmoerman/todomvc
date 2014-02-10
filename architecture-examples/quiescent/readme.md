@@ -1,50 +1,59 @@
-# Framework Name TodoMVC Example
+# Quiescent TodoMVC Example
 
-> Short description of the framework provided by the official website.
+> Quiescent is a lightweight ClojureScript library building on ReactJS.
 
-> _[Framework Name - framework.com](link-to-framework)_
-
-
-## Learning Framework Name
-
-The [Framework Name website]() is a great resource for getting started.
-
-Here are some links you may find helpful:
-
-* [Documentation]()
-* [API Reference]()
-* [Applications built with Framework Name]()
-* [Blog]()
-* [FAQ]()
-* [Framework Name on GitHub]()
-
-Articles and guides from the community:
-
-* [Article 1]()
-* [Article 2]()
-
-Get help from other Framework Name users:
-
-* [Framework Name on StackOverflow](http://stackoverflow.com/questions/tagged/____)
-* [Mailing list on Google Groups]()
-* [Framework Name on Twitter](http://twitter.com/____)
-* [Framework Name on Google +]()
-
-_If you have other helpful links to share, or find any of the links above no longer work, please [let us know](https://github.com/tastejs/todomvc/issues)._
-
+> _[Quiescent on Github](http://github.com/levand/quiescent)_
 
 ## Implementation
 
-How is the app structured? Are there deviations from the spec? If so, why?
+This example application emphasizes handling an application's state,
+in its entirety, as pure immutable data. Updates to the state are
+mediated by Clojure's
+[core.async](https://github.com/clojure/core.async) channels.
 
+The top-level namespace, `todomvc-quiescent`, creates the application
+and wires together all the parts.
+
+The `todomvc-quiescent.render` namespace is solely responsible for
+displaying the application. It is comprised mostly of Quiescent
+component definitions, as well as a `request-render` function that can
+be used to request a re-render of the application on the next
+animation frame by calling Quiescent's `render` function at the
+appropriate time.
+
+When an event handler is triggered, the relevant data is immediately
+placed onto a `core.async` channel. There is one channel for each type
+of event the application cares about; this list is enumerated in the
+`todomvc-quiescent` namespace, which also sets up consumers for each
+channel. When a new value is recieved, it uses the appropriate
+function in the `todomvc-quiescent.data` namespace to calculate the
+new application state. Receipt and processing of a value via a channel
+is also the signal for the application to render.
+
+The functions in `todomvc-quiescent.data` are all pure functions that
+take a state and a value and return a new state. As such, they can be
+used directly with ClojureScript's `swap!` function.
+
+The `todomvc-quiescent.store` namespace is responsible for concerns
+around saving and loading data from HTML5 local storage.
 
 ## Running
 
-If there is a build step required to get the example working, explain it here.
+The compiled JavaScript for the application is distributed in the
+GitHub repository. To view the application locally, just open
+`index.html` in the browser.
 
-To run the app, spin up an HTTP server and visit http://localhost/.../myexample/.
+To compile the ClojureScript yourself, run `lein cljsbuild once dev`
+(for dev-mode compilation) or `lein cljsbuild once prod` for fully
+optimized, minified production code. The dev version can be viewed by
+visiting `index-dev.html`. Note that the dev-mode build artifacts are
+not checked in to git.
 
+The Clojure project also includes a small embedded server. To view the
+project running on localhost, run `lein ring server` and then visit
+http://localhost:3000/architecture-examples/quiescent/ . Note that the
+trailing slash is required.
 
 ## Credit
 
-This TodoMVC application was created by [you]().
+This TodoMVC application was created by [Luke VanderHart](http://github.com/levand).
