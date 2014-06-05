@@ -11,6 +11,7 @@
   ;; Note: it is not idiomatic to compile to, or serve from, the
   ;; project root but TodoMVC wants the index.html there, so we'll
   ;; adjust
+  :resource-paths ["resources" "lib"]
   :cljsbuild {:builds
               {:dev {:source-paths ["src"]
                      :compiler
@@ -23,8 +24,8 @@
                       :compiler
                       {:output-to "main.js"
                        :optimizations :advanced
-                       :preamble ["react/react.min.js"]
-                       :externs ["react/externs/react.js"]
+                       :preamble ["react-0.10.0.min.js"]
+                       :externs ["react-externs-0.10.0.js"]
                        :pretty-print false
                        :closure-warnings {:non-standard-jsdoc :off}}}}})
 

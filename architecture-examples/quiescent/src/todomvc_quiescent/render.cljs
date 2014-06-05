@@ -71,35 +71,35 @@
   "An item in the todo list"
   [[item filter] channels]
   (let [done (boolean (:completed item))]
-    (d/li {:key (:id item)
-           :className (class-name #{(when done "completed")
-                                    (when (hidden? item filter) "hidden")
-                                    (when (:editing item) "editing")})
+    (d/li {:key           (:id item)
+           :className     (class-name #{(when done "completed")
+                                        (when (hidden? item filter) "hidden")
+                                        (when (:editing item) "editing")})
            :onDoubleClick (fn [evt]
                             (am/go (a/>! (:start-edit channels)
                                          (:id item))))}
           (d/div {:className "view"}
                  (d/input {:className "toggle"
-                           :type "checkbox"
-                           :checked done
+                           :type      "checkbox"
+                           :checked   done
                            :onClick
-                           (fn [_]
-                             (am/go (a/>! (:toggle channels)
-                                          (:id item))))})
+                                      (fn [_]
+                                        (am/go (a/>! (:toggle channels)
+                                                     (:id item))))})
                  (d/label {} (:text item))
                  (d/button {:className "destroy"
                             :onClick
-                            (fn [_]
-                              (am/go (a/>! (:destroy channels)
-                                           (:id item))))}))
-          (q/on-render (d/input {:className "edit"
+                                       (fn [_]
+                                         (am/go (a/>! (:destroy channels)
+                                                      (:id item))))}))
+          (q/on-render (d/input {:className    "edit"
                                  :defaultValue (:text item)
-                                 :onKeyDown (fn [evt] (when (enter-key? evt)
-                                                        (.blur (.-target evt))))
-                                 :onBlur (fn [evt]
-                                           (let [v (.-value (.-target evt))]
-                                             (am/go (a/>! (:complete-edit channels)
-                                                          [(:id item) v]))))})
+                                 :onKeyDown    (fn [evt] (when (enter-key? evt)
+                                                           (.blur (.-target evt))))
+                                 :onBlur       (fn [evt]
+                                                 (let [v (.-value (.-target evt))]
+                                                   (am/go (a/>! (:complete-edit channels)
+                                                                [(:id item) v]))))})
                        (fn [node]
                          (when (:editing item) (.focus node)))))))
 (q/defcomponent TodoList
