@@ -4,7 +4,7 @@
   :dependencies [[org.clojure/clojure "1.6.0"]
                  [org.clojure/clojurescript "0.0-2227"]
                  [org.clojure/core.async "0.1.303.0-886421-alpha"]
-                 [quiescent/quiescent "0.1.2-SNAPSHOT"]
+                 [quiescent/quiescent "0.1.3"]
                  [org.clojars.franks42/cljs-uuid-utils "0.1.3"]
                  [ring "1.2.1"]]
   :ring {:handler todomvc-quiescent.serve/handler}
