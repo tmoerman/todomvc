@@ -3,13 +3,13 @@
    data"
   (:refer-clojure :exclude [filter])
   (:require [cljs.core.async :as a]
-            [cljs-uuid-utils :as uuid])
+			[cljs-uuid-utils :as uuid])
   (:require-macros [cljs.core.async.macros :as am]))
 
 (defn new-item
   "Construct a new item"
   [text]
-  {:id (uuid/make-random-uuid)
+  {:id (uuid/uuid-string (uuid/make-random-uuid))
    :text text})
 
 (defn set-filter

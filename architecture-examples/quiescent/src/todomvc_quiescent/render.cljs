@@ -1,7 +1,7 @@
 (ns todomvc-quiescent.render
   (:require [cljs.core.async :as a]
             [quiescent :as q :include-macros true]
-            [quiescent.dom :as d])
+			[quiescent.dom :as d])
   (:require-macros [cljs.core.async.macros :as am]))
 
 (defn enter-key?
@@ -72,7 +72,7 @@
   [[item filter] channels]
   (let [done (boolean (:completed item))]
     (d/li {:key           (:id item)
-           :className     (class-name #{(when done "completed")
+		   :className     (class-name #{(when done "completed")
                                         (when (hidden? item filter) "hidden")
                                         (when (:editing item) "editing")})
            :onDoubleClick (fn [evt]
