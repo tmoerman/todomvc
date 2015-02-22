@@ -1,6 +1,6 @@
 (ns todomvc-quiescent.render
   (:require [cljs.core.async :as a]
-            [quiescent :as q :include-macros true]
+            [quiescent.core :as q :include-macros true]
 			[quiescent.dom :as d])
   (:require-macros [cljs.core.async.macros :as am]))
 
@@ -67,17 +67,30 @@
   (or (and (= filter :active) (:completed item))
       (and (= filter :completed) (not (:completed item)))))
 
+
+(def FocusingInput
+	(q/component
+		(fn [item channels]
+			(d/input {:className "edit"
+					  :defaultValue (:text item)
+					  :onKeyDown (fn [evt] (when (enter-key? evt)
+											   (.blur (.-target evt))))
+					  :onDoubleClick (fn [evt] (.blur (.-target evt)))
+					  :onBlur (fn [evt]
+								  (let [v (.-value (.-target evt))]
+									  (am/go (a/>! (:complete-edit channels)
+												 [(:id item) v]))))}))
+		{:on-render (fn [node item _]
+					   (when (:editing item) (.focus node)))}))
+
 (q/defcomponent Item
   "An item in the todo list"
+  :keyfn (comp first :id)
   [[item filter] channels]
   (let [done (boolean (:completed item))]
-    (d/li {:key           (:id item)
-		   :className     (class-name #{(when done "completed")
+    (d/li {:className     (class-name #{(when done "completed")
                                         (when (hidden? item filter) "hidden")
-                                        (when (:editing item) "editing")})
-           :onDoubleClick (fn [evt]
-                            (am/go (a/>! (:start-edit channels)
-                                         (:id item))))}
+                                        (when (:editing item) "editing")})}
           (d/div {:className "view"}
                  (d/input {:className "toggle"
                            :type      "checkbox"
@@ -86,22 +99,16 @@
                                       (fn [_]
                                         (am/go (a/>! (:toggle channels)
                                                      (:id item))))})
-                 (d/label {} (:text item))
+                 (d/label {:onDoubleClick (fn [evt]
+											  (am/go (a/>! (:start-edit channels)
+														 (:id item))))} (:text item))
                  (d/button {:className "destroy"
                             :onClick
                                        (fn [_]
                                          (am/go (a/>! (:destroy channels)
                                                       (:id item))))}))
-          (q/on-render (d/input {:className    "edit"
-                                 :defaultValue (:text item)
-                                 :onKeyDown    (fn [evt] (when (enter-key? evt)
-                                                           (.blur (.-target evt))))
-                                 :onBlur       (fn [evt]
-                                                 (let [v (.-value (.-target evt))]
-                                                   (am/go (a/>! (:complete-edit channels)
-                                                                [(:id item) v]))))})
-                       (fn [node]
-                         (when (:editing item) (.focus node)))))))
+		(FocusingInput item channels))))
+
 (q/defcomponent TodoList
   "The primary todo list"
   [app channels]

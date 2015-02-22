@@ -3,5 +3,6 @@ target/
 checkouts/
 .nrepl-port
 generated
+main.js
 debug
 *.iml
