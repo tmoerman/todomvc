@@ -85,7 +85,7 @@
 
 (q/defcomponent Item
   "An item in the todo list"
-  :keyfn (comp first :id)
+  :keyfn (comp :id first)
   [[item filter] channels]
   (let [done (boolean (:completed item))]
     (d/li {:className     (class-name #{(when done "completed")
@@ -95,6 +95,7 @@
                  (d/input {:className "toggle"
                            :type      "checkbox"
                            :checked   done
+                           :readOnly  true
                            :onClick
                                       (fn [_]
                                         (am/go (a/>! (:toggle channels)
@@ -123,6 +124,7 @@
          (d/section {:id "main"}
                     (d/input {:id "toggle-all"
                               :type "checkbox"
+                              :readOnly  true
                               :checked true})
                     (d/label {:htmlFor "toggle-all"}
                              "Mark all as complete")

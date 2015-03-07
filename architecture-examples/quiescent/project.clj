@@ -23,5 +23,6 @@
                       :compiler
                       {:output-to "main.js"
                        :optimizations :advanced
-                       :pretty-print false}}}})
+                       :source-map "main.js.map"
+                       :pretty-print true}}}})
 

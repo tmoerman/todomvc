@@ -4,5 +4,6 @@ checkouts/
 .nrepl-port
 generated
 main.js
+main.js.map
 debug
 *.iml
