@@ -57768,29 +57768,29 @@ goog.require("cljs.core");
 goog.require("cljs.core.async");
 kierros.quiescent_DOM_driver.create_quiescent_DOM_driver = function kierros$quiescent_DOM_driver$create_quiescent_DOM_driver(container) {
   return function() {
-    var G__16984__delegate = function(vtree$, args) {
+    var G__23073__delegate = function(vtree$, args) {
       return null;
     };
-    var G__16984 = function(vtree$, var_args) {
+    var G__23073 = function(vtree$, var_args) {
       var args = null;
       if (arguments.length > 1) {
-        var G__16985__i = 0, G__16985__a = new Array(arguments.length - 1);
-        while (G__16985__i < G__16985__a.length) {
-          G__16985__a[G__16985__i] = arguments[G__16985__i + 1];
-          ++G__16985__i;
+        var G__23074__i = 0, G__23074__a = new Array(arguments.length - 1);
+        while (G__23074__i < G__23074__a.length) {
+          G__23074__a[G__23074__i] = arguments[G__23074__i + 1];
+          ++G__23074__i;
         }
-        args = new cljs.core.IndexedSeq(G__16985__a, 0);
+        args = new cljs.core.IndexedSeq(G__23074__a, 0);
       }
-      return G__16984__delegate.call(this, vtree$, args);
+      return G__23073__delegate.call(this, vtree$, args);
     };
-    G__16984.cljs$lang$maxFixedArity = 1;
-    G__16984.cljs$lang$applyTo = function(arglist__16986) {
-      var vtree$ = cljs.core.first(arglist__16986);
-      var args = cljs.core.rest(arglist__16986);
-      return G__16984__delegate(vtree$, args);
+    G__23073.cljs$lang$maxFixedArity = 1;
+    G__23073.cljs$lang$applyTo = function(arglist__23075) {
+      var vtree$ = cljs.core.first(arglist__23075);
+      var args = cljs.core.rest(arglist__23075);
+      return G__23073__delegate(vtree$, args);
     };
-    G__16984.cljs$core$IFn$_invoke$arity$variadic = G__16984__delegate;
-    return G__16984;
+    G__23073.cljs$core$IFn$_invoke$arity$variadic = G__23073__delegate;
+    return G__23073;
   }();
 };
 goog.provide("kierros.core");
@@ -57803,10 +57803,10 @@ kierros.core.make_sink_proxies = function kierros$core$make_sink_proxies(driver_
   }, cljs.core.keys.call(null, driver_map)));
 };
 kierros.core.call_drivers = function kierros$core$call_drivers(driver_map, sink_proxy_map) {
-  return cljs.core.into.call(null, cljs.core.PersistentArrayMap.EMPTY, cljs.core.map.call(null, function(p__20389) {
-    var vec__20390 = p__20389;
-    var name = cljs.core.nth.call(null, vec__20390, 0, null);
-    var driver = cljs.core.nth.call(null, vec__20390, 1, null);
+  return cljs.core.into.call(null, cljs.core.PersistentArrayMap.EMPTY, cljs.core.map.call(null, function(p__23789) {
+    var vec__23790 = p__23789;
+    var name = cljs.core.nth.call(null, vec__23790, 0, null);
+    var driver = cljs.core.nth.call(null, vec__23790, 1, null);
     var sink_proxy = sink_proxy_map.call(null, name);
     var source = driver.call(null, sink_proxy, name);
     return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [name, source], null);
@@ -57832,19 +57832,19 @@ kierros.core_test.make_sink_proxies_test = function kierros$core_test$make_sink_
 };
 kierros.core_test.make_sink_proxies_test.cljs$lang$test = function() {
   try {
-    var values__15757__auto__ = cljs.core._conj.call(null, cljs.core._conj.call(null, cljs.core.List.EMPTY, 3), 2);
-    var result__15758__auto__ = cljs.core.apply.call(null, cljs.core._EQ_, values__15757__auto__);
-    if (cljs.core.truth_(result__15758__auto__)) {
-      cljs.test.do_report.call(null, new cljs.core.PersistentArrayMap(null, 4, [new cljs.core.Keyword(null, "type", "type", 1174270348), new cljs.core.Keyword(null, "pass", "pass", 1574159993), new cljs.core.Keyword(null, "expected", "expected", 1583670997), cljs.core.list(new cljs.core.Symbol(null, "\x3d", "\x3d", -1501502141, null), 2, 3), new cljs.core.Keyword(null, "actual", "actual", 107306363), cljs.core.cons.call(null, cljs.core._EQ_, values__15757__auto__), new cljs.core.Keyword(null, "message", 
+    var values__24602__auto__ = cljs.core._conj.call(null, cljs.core._conj.call(null, cljs.core.List.EMPTY, 3), 2);
+    var result__24603__auto__ = cljs.core.apply.call(null, cljs.core._EQ_, values__24602__auto__);
+    if (cljs.core.truth_(result__24603__auto__)) {
+      cljs.test.do_report.call(null, new cljs.core.PersistentArrayMap(null, 4, [new cljs.core.Keyword(null, "type", "type", 1174270348), new cljs.core.Keyword(null, "pass", "pass", 1574159993), new cljs.core.Keyword(null, "expected", "expected", 1583670997), cljs.core.list(new cljs.core.Symbol(null, "\x3d", "\x3d", -1501502141, null), 2, 3), new cljs.core.Keyword(null, "actual", "actual", 107306363), cljs.core.cons.call(null, cljs.core._EQ_, values__24602__auto__), new cljs.core.Keyword(null, "message", 
       "message", -406056002), null], null));
     } else {
       cljs.test.do_report.call(null, new cljs.core.PersistentArrayMap(null, 4, [new cljs.core.Keyword(null, "type", "type", 1174270348), new cljs.core.Keyword(null, "fail", "fail", 1706214930), new cljs.core.Keyword(null, "expected", "expected", 1583670997), cljs.core.list(new cljs.core.Symbol(null, "\x3d", "\x3d", -1501502141, null), 2, 3), new cljs.core.Keyword(null, "actual", "actual", 107306363), cljs.core._conj.call(null, cljs.core._conj.call(null, cljs.core.List.EMPTY, cljs.core.cons.call(null, 
-      new cljs.core.Symbol(null, "\x3d", "\x3d", -1501502141, null), values__15757__auto__)), new cljs.core.Symbol(null, "not", "not", 1044554643, null)), new cljs.core.Keyword(null, "message", "message", -406056002), null], null));
+      new cljs.core.Symbol(null, "\x3d", "\x3d", -1501502141, null), values__24602__auto__)), new cljs.core.Symbol(null, "not", "not", 1044554643, null)), new cljs.core.Keyword(null, "message", "message", -406056002), null], null));
     }
-    return result__15758__auto__;
-  } catch (e15961) {
-    var t__15795__auto__ = e15961;
-    return cljs.test.do_report.call(null, new cljs.core.PersistentArrayMap(null, 4, [new cljs.core.Keyword(null, "type", "type", 1174270348), new cljs.core.Keyword(null, "error", "error", -978969032), new cljs.core.Keyword(null, "expected", "expected", 1583670997), cljs.core.list(new cljs.core.Symbol(null, "\x3d", "\x3d", -1501502141, null), 2, 3), new cljs.core.Keyword(null, "actual", "actual", 107306363), t__15795__auto__, new cljs.core.Keyword(null, "message", "message", -406056002), null], null));
+    return result__24603__auto__;
+  } catch (e24806) {
+    var t__24640__auto__ = e24806;
+    return cljs.test.do_report.call(null, new cljs.core.PersistentArrayMap(null, 4, [new cljs.core.Keyword(null, "type", "type", 1174270348), new cljs.core.Keyword(null, "error", "error", -978969032), new cljs.core.Keyword(null, "expected", "expected", 1583670997), cljs.core.list(new cljs.core.Symbol(null, "\x3d", "\x3d", -1501502141, null), 2, 3), new cljs.core.Keyword(null, "actual", "actual", 107306363), t__24640__auto__, new cljs.core.Keyword(null, "message", "message", -406056002), null], null));
   }
 };
 kierros.core_test.make_sink_proxies_test.cljs$lang$var = new cljs.core.Var(function() {
@@ -57853,89 +57853,90 @@ kierros.core_test.make_sink_proxies_test.cljs$lang$var = new cljs.core.Var(funct
 "line", 212345235), new cljs.core.Keyword(null, "end-line", "end-line", 1837326455), new cljs.core.Keyword(null, "arglists", "arglists", 1661989754), new cljs.core.Keyword(null, "doc", "doc", 1913296891), new cljs.core.Keyword(null, "test", "test", 577538877)], [new cljs.core.Symbol(null, "kierros.core-test", "kierros.core-test", 5175467, null), new cljs.core.Symbol(null, "make-sink-proxies-test", "make-sink-proxies-test", -769666780, null), "test/kierros/core_test.cljs", 32, 1, 7, 7, cljs.core.List.EMPTY, 
 null, cljs.core.truth_(kierros.core_test.make_sink_proxies_test) ? kierros.core_test.make_sink_proxies_test.cljs$lang$test : null]));
 cljs.test.run_block.call(null, function() {
-  var env15962 = cljs.test.empty_env.call(null);
-  var summary15963 = cljs.core.volatile_BANG_.call(null, new cljs.core.PersistentArrayMap(null, 5, [new cljs.core.Keyword(null, "type", "type", 1174270348), new cljs.core.Keyword(null, "summary", "summary", 380847952), new cljs.core.Keyword(null, "fail", "fail", 1706214930), 0, new cljs.core.Keyword(null, "error", "error", -978969032), 0, new cljs.core.Keyword(null, "pass", "pass", 1574159993), 0, new cljs.core.Keyword(null, "test", "test", 577538877), 0], null));
-  return cljs.core.concat.call(null, cljs.core.concat.call(null, new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [function(env15962, summary15963) {
+  var env24807 = cljs.test.empty_env.call(null);
+  var summary24808 = cljs.core.volatile_BANG_.call(null, new cljs.core.PersistentArrayMap(null, 5, [new cljs.core.Keyword(null, "type", "type", 1174270348), new cljs.core.Keyword(null, "summary", "summary", 380847952), new cljs.core.Keyword(null, "fail", "fail", 1706214930), 0, new cljs.core.Keyword(null, "error", "error", -978969032), 0, new cljs.core.Keyword(null, "pass", "pass", 1574159993), 0, new cljs.core.Keyword(null, "test", "test", 577538877), 0], null));
+  return cljs.core.concat.call(null, cljs.core.concat.call(null, new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [function(env24807, summary24808) {
     return function() {
-      cljs.test.set_env_BANG_.call(null, env15962);
+      cljs.test.set_env_BANG_.call(null, env24807);
       cljs.test.do_report.call(null, new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null, "ns", "ns", 441598760), new cljs.core.Symbol(null, "kierros.core-test", "kierros.core-test", 5175467, null), new cljs.core.Keyword(null, "type", "type", 1174270348), new cljs.core.Keyword(null, "begin-test-ns", "begin-test-ns", -1701237033)], null));
       return cljs.test.block.call(null, function() {
-        var env__15861__auto__ = cljs.test.get_current_env.call(null);
-        return cljs.core.concat.call(null, new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [function(env__15861__auto__, env15962, summary15963) {
+        var env__24706__auto__ = cljs.test.get_current_env.call(null);
+        return cljs.core.concat.call(null, new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [function(env__24706__auto__, env24807, summary24808) {
           return function() {
-            if (env__15861__auto__ == null) {
+            if (env__24706__auto__ == null) {
               cljs.test.set_env_BANG_.call(null, cljs.test.empty_env.call(null));
             } else {
             }
             return null;
           };
-        }(env__15861__auto__, env15962, summary15963)], null), cljs.test.test_vars_block.call(null, new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Var(function() {
+        }(env__24706__auto__, env24807, summary24808)], null), cljs.test.test_vars_block.call(null, new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Var(function() {
           return kierros.core_test.make_sink_proxies_test;
         }, new cljs.core.Symbol("kierros.core-test", "make-sink-proxies-test", "kierros.core-test/make-sink-proxies-test", -1963049751, null), cljs.core.PersistentHashMap.fromArrays([new cljs.core.Keyword(null, "ns", "ns", 441598760), new cljs.core.Keyword(null, "name", "name", 1843675177), new cljs.core.Keyword(null, "file", "file", -1269645878), new cljs.core.Keyword(null, "end-column", "end-column", 1425389514), new cljs.core.Keyword(null, "column", "column", 2078222095), new cljs.core.Keyword(null, 
         "line", "line", 212345235), new cljs.core.Keyword(null, "end-line", "end-line", 1837326455), new cljs.core.Keyword(null, "arglists", "arglists", 1661989754), new cljs.core.Keyword(null, "doc", "doc", 1913296891), new cljs.core.Keyword(null, "test", "test", 577538877)], [new cljs.core.Symbol(null, "kierros.core-test", "kierros.core-test", 5175467, null), new cljs.core.Symbol(null, "make-sink-proxies-test", "make-sink-proxies-test", -769666780, null), "test/kierros/core_test.cljs", 32, 1, 7, 
-        7, cljs.core.List.EMPTY, null, cljs.core.truth_(kierros.core_test.make_sink_proxies_test) ? kierros.core_test.make_sink_proxies_test.cljs$lang$test : null]))], null)), new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [function(env__15861__auto__, env15962, summary15963) {
+        7, cljs.core.List.EMPTY, null, cljs.core.truth_(kierros.core_test.make_sink_proxies_test) ? kierros.core_test.make_sink_proxies_test.cljs$lang$test : null]))], null)), new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [function(env__24706__auto__, env24807, summary24808) {
           return function() {
-            if (env__15861__auto__ == null) {
+            if (env__24706__auto__ == null) {
               return cljs.test.clear_env_BANG_.call(null);
             } else {
               return null;
             }
           };
-        }(env__15861__auto__, env15962, summary15963)], null));
+        }(env__24706__auto__, env24807, summary24808)], null));
       }());
     };
-  }(env15962, summary15963), function(env15962, summary15963) {
+  }(env24807, summary24808), function(env24807, summary24808) {
     return function() {
       return cljs.test.do_report.call(null, new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null, "ns", "ns", 441598760), new cljs.core.Symbol(null, "kierros.core-test", "kierros.core-test", 5175467, null), new cljs.core.Keyword(null, "type", "type", 1174270348), new cljs.core.Keyword(null, "end-test-ns", "end-test-ns", 1620675645)], null));
     };
-  }(env15962, summary15963)], null), new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [function(env15962, summary15963) {
+  }(env24807, summary24808)], null), new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [function(env24807, summary24808) {
     return function() {
-      return cljs.core._vreset_BANG_.call(null, summary15963, cljs.core.partial.call(null, cljs.core.merge_with, cljs.core._PLUS_).call(null, cljs.core._deref.call(null, summary15963), (new cljs.core.Keyword(null, "report-counters", "report-counters", -1702609242)).cljs$core$IFn$_invoke$arity$1(cljs.test.get_and_clear_env_BANG_.call(null))));
+      return cljs.core._vreset_BANG_.call(null, summary24808, cljs.core.partial.call(null, cljs.core.merge_with, cljs.core._PLUS_).call(null, cljs.core._deref.call(null, summary24808), (new cljs.core.Keyword(null, "report-counters", "report-counters", -1702609242)).cljs$core$IFn$_invoke$arity$1(cljs.test.get_and_clear_env_BANG_.call(null))));
     };
-  }(env15962, summary15963)], null)), new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [function(env15962, summary15963) {
+  }(env24807, summary24808)], null)), new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [function(env24807, summary24808) {
     return function() {
-      cljs.test.set_env_BANG_.call(null, env15962);
-      cljs.test.do_report.call(null, cljs.core.deref.call(null, summary15963));
-      cljs.test.report.call(null, cljs.core.assoc.call(null, cljs.core.deref.call(null, summary15963), new cljs.core.Keyword(null, "type", "type", 1174270348), new cljs.core.Keyword(null, "end-run-tests", "end-run-tests", 267300563)));
+      cljs.test.set_env_BANG_.call(null, env24807);
+      cljs.test.do_report.call(null, cljs.core.deref.call(null, summary24808));
+      cljs.test.report.call(null, cljs.core.assoc.call(null, cljs.core.deref.call(null, summary24808), new cljs.core.Keyword(null, "type", "type", 1174270348), new cljs.core.Keyword(null, "end-run-tests", "end-run-tests", 267300563)));
       return cljs.test.clear_env_BANG_.call(null);
     };
-  }(env15962, summary15963)], null));
+  }(env24807, summary24808)], null));
 }());
 goog.provide("kierros.util");
 goog.require("cljs.core");
+goog.require("cljs.core.async");
 kierros.util.scan = function kierros$util$scan(f) {
   return function(xf) {
     var state = cljs.core.volatile_BANG_.call(null, new cljs.core.Keyword("kierros.util", "none", "kierros.util/none", -2027714407));
     return function(state) {
       return function() {
-        var G__12822 = null;
-        var G__12822__0 = function() {
+        var G__23793 = null;
+        var G__23793__0 = function() {
           return xf.call(null);
         };
-        var G__12822__1 = function(result) {
+        var G__23793__1 = function(result) {
           return xf.call(null, result);
         };
-        var G__12822__2 = function(result, input) {
+        var G__23793__2 = function(result, input) {
           var prev = cljs.core.deref.call(null, state);
           var next = cljs.core._EQ_.call(null, prev, new cljs.core.Keyword("kierros.util", "none", "kierros.util/none", -2027714407)) ? input : f.call(null, prev, input);
           cljs.core.vreset_BANG_.call(null, state, next);
           return xf.call(null, result, next);
         };
-        G__12822 = function(result, input) {
+        G__23793 = function(result, input) {
           switch(arguments.length) {
             case 0:
-              return G__12822__0.call(this);
+              return G__23793__0.call(this);
             case 1:
-              return G__12822__1.call(this, result);
+              return G__23793__1.call(this, result);
             case 2:
-              return G__12822__2.call(this, result, input);
+              return G__23793__2.call(this, result, input);
           }
           throw new Error("Invalid arity: " + arguments.length);
         };
-        G__12822.cljs$core$IFn$_invoke$arity$0 = G__12822__0;
-        G__12822.cljs$core$IFn$_invoke$arity$1 = G__12822__1;
-        G__12822.cljs$core$IFn$_invoke$arity$2 = G__12822__2;
-        return G__12822;
+        G__23793.cljs$core$IFn$_invoke$arity$0 = G__23793__0;
+        G__23793.cljs$core$IFn$_invoke$arity$1 = G__23793__1;
+        G__23793.cljs$core$IFn$_invoke$arity$2 = G__23793__2;
+        return G__23793;
       }();
     }(state);
   };
@@ -57943,6 +57944,7 @@ kierros.util.scan = function kierros$util$scan(f) {
 goog.provide("kierros.util_test");
 goog.require("cljs.core");
 goog.require("kierros.util");
+goog.require("cljs.core.async");
 goog.require("cljs.test");
 kierros.util_test.amend_state = function kierros$util_test$amend_state(state, f) {
   return f.call(null, state);
@@ -57951,78 +57953,78 @@ kierros.util_test.sequence_scan_empty = function kierros$util_test$sequence_scan
   return cljs.test.test_var.call(null, kierros$util_test$sequence_scan_empty.cljs$lang$var);
 };
 kierros.util_test.sequence_scan_empty.cljs$lang$test = function() {
-  var result = cljs.core.sequence.call(null, kierros.util.scan.call(null, kierros.util_test.amend_state), cljs.core.PersistentVector.EMPTY);
+  var s = cljs.core.sequence.call(null, kierros.util.scan.call(null, kierros.util_test.amend_state), cljs.core.PersistentVector.EMPTY);
   try {
-    var values__9163__auto__ = cljs.core._conj.call(null, cljs.core._conj.call(null, cljs.core.List.EMPTY, cljs.core.PersistentVector.EMPTY), result);
+    var values__9163__auto__ = cljs.core._conj.call(null, cljs.core._conj.call(null, cljs.core.List.EMPTY, cljs.core.PersistentVector.EMPTY), s);
     var result__9164__auto__ = cljs.core.apply.call(null, cljs.core._EQ_, values__9163__auto__);
     if (cljs.core.truth_(result__9164__auto__)) {
-      cljs.test.do_report.call(null, new cljs.core.PersistentArrayMap(null, 4, [new cljs.core.Keyword(null, "type", "type", 1174270348), new cljs.core.Keyword(null, "pass", "pass", 1574159993), new cljs.core.Keyword(null, "expected", "expected", 1583670997), cljs.core.list(new cljs.core.Symbol(null, "\x3d", "\x3d", -1501502141, null), new cljs.core.Symbol(null, "result", "result", -1239343558, null), cljs.core.PersistentVector.EMPTY), new cljs.core.Keyword(null, "actual", "actual", 107306363), cljs.core.cons.call(null, 
+      cljs.test.do_report.call(null, new cljs.core.PersistentArrayMap(null, 4, [new cljs.core.Keyword(null, "type", "type", 1174270348), new cljs.core.Keyword(null, "pass", "pass", 1574159993), new cljs.core.Keyword(null, "expected", "expected", 1583670997), cljs.core.list(new cljs.core.Symbol(null, "\x3d", "\x3d", -1501502141, null), new cljs.core.Symbol(null, "s", "s", -948495851, null), cljs.core.PersistentVector.EMPTY), new cljs.core.Keyword(null, "actual", "actual", 107306363), cljs.core.cons.call(null, 
       cljs.core._EQ_, values__9163__auto__), new cljs.core.Keyword(null, "message", "message", -406056002), null], null));
     } else {
-      cljs.test.do_report.call(null, new cljs.core.PersistentArrayMap(null, 4, [new cljs.core.Keyword(null, "type", "type", 1174270348), new cljs.core.Keyword(null, "fail", "fail", 1706214930), new cljs.core.Keyword(null, "expected", "expected", 1583670997), cljs.core.list(new cljs.core.Symbol(null, "\x3d", "\x3d", -1501502141, null), new cljs.core.Symbol(null, "result", "result", -1239343558, null), cljs.core.PersistentVector.EMPTY), new cljs.core.Keyword(null, "actual", "actual", 107306363), cljs.core._conj.call(null, 
+      cljs.test.do_report.call(null, new cljs.core.PersistentArrayMap(null, 4, [new cljs.core.Keyword(null, "type", "type", 1174270348), new cljs.core.Keyword(null, "fail", "fail", 1706214930), new cljs.core.Keyword(null, "expected", "expected", 1583670997), cljs.core.list(new cljs.core.Symbol(null, "\x3d", "\x3d", -1501502141, null), new cljs.core.Symbol(null, "s", "s", -948495851, null), cljs.core.PersistentVector.EMPTY), new cljs.core.Keyword(null, "actual", "actual", 107306363), cljs.core._conj.call(null, 
       cljs.core._conj.call(null, cljs.core.List.EMPTY, cljs.core.cons.call(null, new cljs.core.Symbol(null, "\x3d", "\x3d", -1501502141, null), values__9163__auto__)), new cljs.core.Symbol(null, "not", "not", 1044554643, null)), new cljs.core.Keyword(null, "message", "message", -406056002), null], null));
     }
     return result__9164__auto__;
-  } catch (e9367) {
-    var t__9201__auto__ = e9367;
-    return cljs.test.do_report.call(null, new cljs.core.PersistentArrayMap(null, 4, [new cljs.core.Keyword(null, "type", "type", 1174270348), new cljs.core.Keyword(null, "error", "error", -978969032), new cljs.core.Keyword(null, "expected", "expected", 1583670997), cljs.core.list(new cljs.core.Symbol(null, "\x3d", "\x3d", -1501502141, null), new cljs.core.Symbol(null, "result", "result", -1239343558, null), cljs.core.PersistentVector.EMPTY), new cljs.core.Keyword(null, "actual", "actual", 107306363), 
-    t__9201__auto__, new cljs.core.Keyword(null, "message", "message", -406056002), null], null));
+  } catch (e12934) {
+    var t__9201__auto__ = e12934;
+    return cljs.test.do_report.call(null, new cljs.core.PersistentArrayMap(null, 4, [new cljs.core.Keyword(null, "type", "type", 1174270348), new cljs.core.Keyword(null, "error", "error", -978969032), new cljs.core.Keyword(null, "expected", "expected", 1583670997), cljs.core.list(new cljs.core.Symbol(null, "\x3d", "\x3d", -1501502141, null), new cljs.core.Symbol(null, "s", "s", -948495851, null), cljs.core.PersistentVector.EMPTY), new cljs.core.Keyword(null, "actual", "actual", 107306363), t__9201__auto__, 
+    new cljs.core.Keyword(null, "message", "message", -406056002), null], null));
   }
 };
 kierros.util_test.sequence_scan_empty.cljs$lang$var = new cljs.core.Var(function() {
   return kierros.util_test.sequence_scan_empty;
 }, new cljs.core.Symbol("kierros.util-test", "sequence-scan-empty", "kierros.util-test/sequence-scan-empty", -234516681, null), cljs.core.PersistentHashMap.fromArrays([new cljs.core.Keyword(null, "ns", "ns", 441598760), new cljs.core.Keyword(null, "name", "name", 1843675177), new cljs.core.Keyword(null, "file", "file", -1269645878), new cljs.core.Keyword(null, "end-column", "end-column", 1425389514), new cljs.core.Keyword(null, "column", "column", 2078222095), new cljs.core.Keyword(null, "line", 
-"line", 212345235), new cljs.core.Keyword(null, "end-line", "end-line", 1837326455), new cljs.core.Keyword(null, "arglists", "arglists", 1661989754), new cljs.core.Keyword(null, "doc", "doc", 1913296891), new cljs.core.Keyword(null, "test", "test", 577538877)], [new cljs.core.Symbol(null, "kierros.util-test", "kierros.util-test", -56858064, null), new cljs.core.Symbol(null, "sequence-scan-empty", "sequence-scan-empty", 154513521, null), "test/kierros/util_test.cljs", 29, 1, 7, 7, cljs.core.List.EMPTY, 
+"line", 212345235), new cljs.core.Keyword(null, "end-line", "end-line", 1837326455), new cljs.core.Keyword(null, "arglists", "arglists", 1661989754), new cljs.core.Keyword(null, "doc", "doc", 1913296891), new cljs.core.Keyword(null, "test", "test", 577538877)], [new cljs.core.Symbol(null, "kierros.util-test", "kierros.util-test", -56858064, null), new cljs.core.Symbol(null, "sequence-scan-empty", "sequence-scan-empty", 154513521, null), "test/kierros/util_test.cljs", 29, 1, 10, 10, cljs.core.List.EMPTY, 
 null, cljs.core.truth_(kierros.util_test.sequence_scan_empty) ? kierros.util_test.sequence_scan_empty.cljs$lang$test : null]));
 kierros.util_test.sequence_scan_singleton = function kierros$util_test$sequence_scan_singleton() {
   return cljs.test.test_var.call(null, kierros$util_test$sequence_scan_singleton.cljs$lang$var);
 };
 kierros.util_test.sequence_scan_singleton.cljs$lang$test = function() {
-  var result = cljs.core.sequence.call(null, kierros.util.scan.call(null, kierros.util_test.amend_state), new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null, "key", "key", -1516042587), 1], null)], null));
+  var s = cljs.core.sequence.call(null, kierros.util.scan.call(null, kierros.util_test.amend_state), new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null, "key", "key", -1516042587), 1], null)], null));
   try {
-    var values__9163__auto__ = cljs.core._conj.call(null, cljs.core._conj.call(null, cljs.core.List.EMPTY, new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null, "key", "key", -1516042587), 1], null)], null)), result);
+    var values__9163__auto__ = cljs.core._conj.call(null, cljs.core._conj.call(null, cljs.core.List.EMPTY, new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null, "key", "key", -1516042587), 1], null)], null)), s);
     var result__9164__auto__ = cljs.core.apply.call(null, cljs.core._EQ_, values__9163__auto__);
     if (cljs.core.truth_(result__9164__auto__)) {
-      cljs.test.do_report.call(null, new cljs.core.PersistentArrayMap(null, 4, [new cljs.core.Keyword(null, "type", "type", 1174270348), new cljs.core.Keyword(null, "pass", "pass", 1574159993), new cljs.core.Keyword(null, "expected", "expected", 1583670997), cljs.core.list(new cljs.core.Symbol(null, "\x3d", "\x3d", -1501502141, null), new cljs.core.Symbol(null, "result", "result", -1239343558, null), new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentArrayMap(null, 
+      cljs.test.do_report.call(null, new cljs.core.PersistentArrayMap(null, 4, [new cljs.core.Keyword(null, "type", "type", 1174270348), new cljs.core.Keyword(null, "pass", "pass", 1574159993), new cljs.core.Keyword(null, "expected", "expected", 1583670997), cljs.core.list(new cljs.core.Symbol(null, "\x3d", "\x3d", -1501502141, null), new cljs.core.Symbol(null, "s", "s", -948495851, null), new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentArrayMap(null, 
       1, [new cljs.core.Keyword(null, "key", "key", -1516042587), 1], null)], null)), new cljs.core.Keyword(null, "actual", "actual", 107306363), cljs.core.cons.call(null, cljs.core._EQ_, values__9163__auto__), new cljs.core.Keyword(null, "message", "message", -406056002), null], null));
     } else {
-      cljs.test.do_report.call(null, new cljs.core.PersistentArrayMap(null, 4, [new cljs.core.Keyword(null, "type", "type", 1174270348), new cljs.core.Keyword(null, "fail", "fail", 1706214930), new cljs.core.Keyword(null, "expected", "expected", 1583670997), cljs.core.list(new cljs.core.Symbol(null, "\x3d", "\x3d", -1501502141, null), new cljs.core.Symbol(null, "result", "result", -1239343558, null), new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentArrayMap(null, 
+      cljs.test.do_report.call(null, new cljs.core.PersistentArrayMap(null, 4, [new cljs.core.Keyword(null, "type", "type", 1174270348), new cljs.core.Keyword(null, "fail", "fail", 1706214930), new cljs.core.Keyword(null, "expected", "expected", 1583670997), cljs.core.list(new cljs.core.Symbol(null, "\x3d", "\x3d", -1501502141, null), new cljs.core.Symbol(null, "s", "s", -948495851, null), new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentArrayMap(null, 
       1, [new cljs.core.Keyword(null, "key", "key", -1516042587), 1], null)], null)), new cljs.core.Keyword(null, "actual", "actual", 107306363), cljs.core._conj.call(null, cljs.core._conj.call(null, cljs.core.List.EMPTY, cljs.core.cons.call(null, new cljs.core.Symbol(null, "\x3d", "\x3d", -1501502141, null), values__9163__auto__)), new cljs.core.Symbol(null, "not", "not", 1044554643, null)), new cljs.core.Keyword(null, "message", "message", -406056002), null], null));
     }
     return result__9164__auto__;
-  } catch (e9368) {
-    var t__9201__auto__ = e9368;
-    return cljs.test.do_report.call(null, new cljs.core.PersistentArrayMap(null, 4, [new cljs.core.Keyword(null, "type", "type", 1174270348), new cljs.core.Keyword(null, "error", "error", -978969032), new cljs.core.Keyword(null, "expected", "expected", 1583670997), cljs.core.list(new cljs.core.Symbol(null, "\x3d", "\x3d", -1501502141, null), new cljs.core.Symbol(null, "result", "result", -1239343558, null), new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentArrayMap(null, 
+  } catch (e12935) {
+    var t__9201__auto__ = e12935;
+    return cljs.test.do_report.call(null, new cljs.core.PersistentArrayMap(null, 4, [new cljs.core.Keyword(null, "type", "type", 1174270348), new cljs.core.Keyword(null, "error", "error", -978969032), new cljs.core.Keyword(null, "expected", "expected", 1583670997), cljs.core.list(new cljs.core.Symbol(null, "\x3d", "\x3d", -1501502141, null), new cljs.core.Symbol(null, "s", "s", -948495851, null), new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentArrayMap(null, 
     1, [new cljs.core.Keyword(null, "key", "key", -1516042587), 1], null)], null)), new cljs.core.Keyword(null, "actual", "actual", 107306363), t__9201__auto__, new cljs.core.Keyword(null, "message", "message", -406056002), null], null));
   }
 };
 kierros.util_test.sequence_scan_singleton.cljs$lang$var = new cljs.core.Var(function() {
   return kierros.util_test.sequence_scan_singleton;
 }, new cljs.core.Symbol("kierros.util-test", "sequence-scan-singleton", "kierros.util-test/sequence-scan-singleton", 746187083, null), cljs.core.PersistentHashMap.fromArrays([new cljs.core.Keyword(null, "ns", "ns", 441598760), new cljs.core.Keyword(null, "name", "name", 1843675177), new cljs.core.Keyword(null, "file", "file", -1269645878), new cljs.core.Keyword(null, "end-column", "end-column", 1425389514), new cljs.core.Keyword(null, "column", "column", 2078222095), new cljs.core.Keyword(null, "line", 
-"line", 212345235), new cljs.core.Keyword(null, "end-line", "end-line", 1837326455), new cljs.core.Keyword(null, "arglists", "arglists", 1661989754), new cljs.core.Keyword(null, "doc", "doc", 1913296891), new cljs.core.Keyword(null, "test", "test", 577538877)], [new cljs.core.Symbol(null, "kierros.util-test", "kierros.util-test", -56858064, null), new cljs.core.Symbol(null, "sequence-scan-singleton", "sequence-scan-singleton", 189384717, null), "test/kierros/util_test.cljs", 33, 1, 12, 12, cljs.core.List.EMPTY, 
+"line", 212345235), new cljs.core.Keyword(null, "end-line", "end-line", 1837326455), new cljs.core.Keyword(null, "arglists", "arglists", 1661989754), new cljs.core.Keyword(null, "doc", "doc", 1913296891), new cljs.core.Keyword(null, "test", "test", 577538877)], [new cljs.core.Symbol(null, "kierros.util-test", "kierros.util-test", -56858064, null), new cljs.core.Symbol(null, "sequence-scan-singleton", "sequence-scan-singleton", 189384717, null), "test/kierros/util_test.cljs", 33, 1, 15, 15, cljs.core.List.EMPTY, 
 null, cljs.core.truth_(kierros.util_test.sequence_scan_singleton) ? kierros.util_test.sequence_scan_singleton.cljs$lang$test : null]));
 kierros.util_test.sequence_scan_one_amendment = function kierros$util_test$sequence_scan_one_amendment() {
   return cljs.test.test_var.call(null, kierros$util_test$sequence_scan_one_amendment.cljs$lang$var);
 };
 kierros.util_test.sequence_scan_one_amendment.cljs$lang$test = function() {
-  var result = cljs.core.sequence.call(null, kierros.util.scan.call(null, kierros.util_test.amend_state), new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null, "key", "key", -1516042587), 1], null), function(p1__9369_SHARP_) {
-    return cljs.core.assoc.call(null, p1__9369_SHARP_, new cljs.core.Keyword(null, "foo", "foo", 1268894036), 2);
+  var s = cljs.core.sequence.call(null, kierros.util.scan.call(null, kierros.util_test.amend_state), new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null, "key", "key", -1516042587), 1], null), function(p1__12936_SHARP_) {
+    return cljs.core.assoc.call(null, p1__12936_SHARP_, new cljs.core.Keyword(null, "foo", "foo", 1268894036), 2);
   }], null));
   try {
-    var values__9163__auto__ = cljs.core._conj.call(null, cljs.core._conj.call(null, cljs.core.List.EMPTY, new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null, "key", "key", -1516042587), 1], null), new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null, "key", "key", -1516042587), 1, new cljs.core.Keyword(null, "foo", "foo", 1268894036), 2], null)], null)), result);
+    var values__9163__auto__ = cljs.core._conj.call(null, cljs.core._conj.call(null, cljs.core.List.EMPTY, new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null, "key", "key", -1516042587), 1], null), new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null, "key", "key", -1516042587), 1, new cljs.core.Keyword(null, "foo", "foo", 1268894036), 2], null)], null)), s);
     var result__9164__auto__ = cljs.core.apply.call(null, cljs.core._EQ_, values__9163__auto__);
     if (cljs.core.truth_(result__9164__auto__)) {
-      cljs.test.do_report.call(null, new cljs.core.PersistentArrayMap(null, 4, [new cljs.core.Keyword(null, "type", "type", 1174270348), new cljs.core.Keyword(null, "pass", "pass", 1574159993), new cljs.core.Keyword(null, "expected", "expected", 1583670997), cljs.core.list(new cljs.core.Symbol(null, "\x3d", "\x3d", -1501502141, null), new cljs.core.Symbol(null, "result", "result", -1239343558, null), new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentArrayMap(null, 
+      cljs.test.do_report.call(null, new cljs.core.PersistentArrayMap(null, 4, [new cljs.core.Keyword(null, "type", "type", 1174270348), new cljs.core.Keyword(null, "pass", "pass", 1574159993), new cljs.core.Keyword(null, "expected", "expected", 1583670997), cljs.core.list(new cljs.core.Symbol(null, "\x3d", "\x3d", -1501502141, null), new cljs.core.Symbol(null, "s", "s", -948495851, null), new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentArrayMap(null, 
       1, [new cljs.core.Keyword(null, "key", "key", -1516042587), 1], null), new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null, "key", "key", -1516042587), 1, new cljs.core.Keyword(null, "foo", "foo", 1268894036), 2], null)], null)), new cljs.core.Keyword(null, "actual", "actual", 107306363), cljs.core.cons.call(null, cljs.core._EQ_, values__9163__auto__), new cljs.core.Keyword(null, "message", "message", -406056002), null], null));
     } else {
-      cljs.test.do_report.call(null, new cljs.core.PersistentArrayMap(null, 4, [new cljs.core.Keyword(null, "type", "type", 1174270348), new cljs.core.Keyword(null, "fail", "fail", 1706214930), new cljs.core.Keyword(null, "expected", "expected", 1583670997), cljs.core.list(new cljs.core.Symbol(null, "\x3d", "\x3d", -1501502141, null), new cljs.core.Symbol(null, "result", "result", -1239343558, null), new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentArrayMap(null, 
+      cljs.test.do_report.call(null, new cljs.core.PersistentArrayMap(null, 4, [new cljs.core.Keyword(null, "type", "type", 1174270348), new cljs.core.Keyword(null, "fail", "fail", 1706214930), new cljs.core.Keyword(null, "expected", "expected", 1583670997), cljs.core.list(new cljs.core.Symbol(null, "\x3d", "\x3d", -1501502141, null), new cljs.core.Symbol(null, "s", "s", -948495851, null), new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentArrayMap(null, 
       1, [new cljs.core.Keyword(null, "key", "key", -1516042587), 1], null), new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null, "key", "key", -1516042587), 1, new cljs.core.Keyword(null, "foo", "foo", 1268894036), 2], null)], null)), new cljs.core.Keyword(null, "actual", "actual", 107306363), cljs.core._conj.call(null, cljs.core._conj.call(null, cljs.core.List.EMPTY, cljs.core.cons.call(null, new cljs.core.Symbol(null, "\x3d", "\x3d", -1501502141, null), values__9163__auto__)), 
       new cljs.core.Symbol(null, "not", "not", 1044554643, null)), new cljs.core.Keyword(null, "message", "message", -406056002), null], null));
     }
     return result__9164__auto__;
-  } catch (e9370) {
-    var t__9201__auto__ = e9370;
-    return cljs.test.do_report.call(null, new cljs.core.PersistentArrayMap(null, 4, [new cljs.core.Keyword(null, "type", "type", 1174270348), new cljs.core.Keyword(null, "error", "error", -978969032), new cljs.core.Keyword(null, "expected", "expected", 1583670997), cljs.core.list(new cljs.core.Symbol(null, "\x3d", "\x3d", -1501502141, null), new cljs.core.Symbol(null, "result", "result", -1239343558, null), new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentArrayMap(null, 
+  } catch (e12937) {
+    var t__9201__auto__ = e12937;
+    return cljs.test.do_report.call(null, new cljs.core.PersistentArrayMap(null, 4, [new cljs.core.Keyword(null, "type", "type", 1174270348), new cljs.core.Keyword(null, "error", "error", -978969032), new cljs.core.Keyword(null, "expected", "expected", 1583670997), cljs.core.list(new cljs.core.Symbol(null, "\x3d", "\x3d", -1501502141, null), new cljs.core.Symbol(null, "s", "s", -948495851, null), new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentArrayMap(null, 
     1, [new cljs.core.Keyword(null, "key", "key", -1516042587), 1], null), new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null, "key", "key", -1516042587), 1, new cljs.core.Keyword(null, "foo", "foo", 1268894036), 2], null)], null)), new cljs.core.Keyword(null, "actual", "actual", 107306363), t__9201__auto__, new cljs.core.Keyword(null, "message", "message", -406056002), null], null));
   }
 };
@@ -58030,52 +58032,502 @@ kierros.util_test.sequence_scan_one_amendment.cljs$lang$var = new cljs.core.Var(
   return kierros.util_test.sequence_scan_one_amendment;
 }, new cljs.core.Symbol("kierros.util-test", "sequence-scan-one-amendment", "kierros.util-test/sequence-scan-one-amendment", 588485599, null), cljs.core.PersistentHashMap.fromArrays([new cljs.core.Keyword(null, "ns", "ns", 441598760), new cljs.core.Keyword(null, "name", "name", 1843675177), new cljs.core.Keyword(null, "file", "file", -1269645878), new cljs.core.Keyword(null, "end-column", "end-column", 1425389514), new cljs.core.Keyword(null, "column", "column", 2078222095), new cljs.core.Keyword(null, 
 "line", "line", 212345235), new cljs.core.Keyword(null, "end-line", "end-line", 1837326455), new cljs.core.Keyword(null, "arglists", "arglists", 1661989754), new cljs.core.Keyword(null, "doc", "doc", 1913296891), new cljs.core.Keyword(null, "test", "test", 577538877)], [new cljs.core.Symbol(null, "kierros.util-test", "kierros.util-test", -56858064, null), new cljs.core.Symbol(null, "sequence-scan-one-amendment", "sequence-scan-one-amendment", 1550020625, null), "test/kierros/util_test.cljs", 37, 
-1, 17, 17, cljs.core.List.EMPTY, null, cljs.core.truth_(kierros.util_test.sequence_scan_one_amendment) ? kierros.util_test.sequence_scan_one_amendment.cljs$lang$test : null]));
-kierros.util_test.sequence_scan_two_amendments = function kierros$util_test$sequence_scan_two_amendments() {
-  return cljs.test.test_var.call(null, kierros$util_test$sequence_scan_two_amendments.cljs$lang$var);
+1, 20, 20, cljs.core.List.EMPTY, null, cljs.core.truth_(kierros.util_test.sequence_scan_one_amendment) ? kierros.util_test.sequence_scan_one_amendment.cljs$lang$test : null]));
+kierros.util_test.init_PLUS_amendments = new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null, "key", "key", -1516042587), 1], null), function(p1__12938_SHARP_) {
+  return cljs.core.assoc.call(null, p1__12938_SHARP_, new cljs.core.Keyword(null, "foo", "foo", 1268894036), 2);
+}, function(p1__12939_SHARP_) {
+  return cljs.core.assoc.call(null, p1__12939_SHARP_, new cljs.core.Keyword(null, "key", "key", -1516042587), "one");
+}], null);
+kierros.util_test.expected_states = new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null, "key", "key", -1516042587), 1], null), new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null, "key", "key", -1516042587), 1, new cljs.core.Keyword(null, "foo", "foo", 1268894036), 2], null), new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null, "key", "key", -1516042587), "one", 
+new cljs.core.Keyword(null, "foo", "foo", 1268894036), 2], null)], null);
+kierros.util_test.scan_amendments = function kierros$util_test$scan_amendments() {
+  return cljs.test.test_var.call(null, kierros$util_test$scan_amendments.cljs$lang$var);
 };
-kierros.util_test.sequence_scan_two_amendments.cljs$lang$test = function() {
-  var result = cljs.core.sequence.call(null, kierros.util.scan.call(null, kierros.util_test.amend_state), new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null, "key", "key", -1516042587), 1], null), function(p1__9371_SHARP_) {
-    return cljs.core.assoc.call(null, p1__9371_SHARP_, new cljs.core.Keyword(null, "foo", "foo", 1268894036), 2);
-  }, function(p1__9372_SHARP_) {
-    return cljs.core.assoc.call(null, p1__9372_SHARP_, new cljs.core.Keyword(null, "key", "key", -1516042587), "one");
-  }], null));
+kierros.util_test.scan_amendments.cljs$lang$test = function() {
+  var s = cljs.core.sequence.call(null, kierros.util.scan.call(null, kierros.util_test.amend_state), kierros.util_test.init_PLUS_amendments);
   try {
-    var values__9163__auto__ = cljs.core._conj.call(null, cljs.core._conj.call(null, cljs.core.List.EMPTY, new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null, "key", "key", -1516042587), 1], null), new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null, "key", "key", -1516042587), 1, new cljs.core.Keyword(null, "foo", "foo", 1268894036), 2], null), new cljs.core.PersistentArrayMap(null, 
-    2, [new cljs.core.Keyword(null, "key", "key", -1516042587), "one", new cljs.core.Keyword(null, "foo", "foo", 1268894036), 2], null)], null)), result);
+    var values__9163__auto__ = cljs.core._conj.call(null, cljs.core._conj.call(null, cljs.core.List.EMPTY, kierros.util_test.expected_states), s);
     var result__9164__auto__ = cljs.core.apply.call(null, cljs.core._EQ_, values__9163__auto__);
     if (cljs.core.truth_(result__9164__auto__)) {
-      cljs.test.do_report.call(null, new cljs.core.PersistentArrayMap(null, 4, [new cljs.core.Keyword(null, "type", "type", 1174270348), new cljs.core.Keyword(null, "pass", "pass", 1574159993), new cljs.core.Keyword(null, "expected", "expected", 1583670997), cljs.core.list(new cljs.core.Symbol(null, "\x3d", "\x3d", -1501502141, null), new cljs.core.Symbol(null, "result", "result", -1239343558, null), new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentArrayMap(null, 
-      1, [new cljs.core.Keyword(null, "key", "key", -1516042587), 1], null), new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null, "key", "key", -1516042587), 1, new cljs.core.Keyword(null, "foo", "foo", 1268894036), 2], null), new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null, "key", "key", -1516042587), "one", new cljs.core.Keyword(null, "foo", "foo", 1268894036), 2], null)], null)), new cljs.core.Keyword(null, "actual", "actual", 107306363), cljs.core.cons.call(null, 
-      cljs.core._EQ_, values__9163__auto__), new cljs.core.Keyword(null, "message", "message", -406056002), null], null));
+      cljs.test.do_report.call(null, new cljs.core.PersistentArrayMap(null, 4, [new cljs.core.Keyword(null, "type", "type", 1174270348), new cljs.core.Keyword(null, "pass", "pass", 1574159993), new cljs.core.Keyword(null, "expected", "expected", 1583670997), cljs.core.list(new cljs.core.Symbol(null, "\x3d", "\x3d", -1501502141, null), new cljs.core.Symbol(null, "s", "s", -948495851, null), new cljs.core.Symbol(null, "expected-states", "expected-states", 1332478011, null)), new cljs.core.Keyword(null, 
+      "actual", "actual", 107306363), cljs.core.cons.call(null, cljs.core._EQ_, values__9163__auto__), new cljs.core.Keyword(null, "message", "message", -406056002), null], null));
     } else {
-      cljs.test.do_report.call(null, new cljs.core.PersistentArrayMap(null, 4, [new cljs.core.Keyword(null, "type", "type", 1174270348), new cljs.core.Keyword(null, "fail", "fail", 1706214930), new cljs.core.Keyword(null, "expected", "expected", 1583670997), cljs.core.list(new cljs.core.Symbol(null, "\x3d", "\x3d", -1501502141, null), new cljs.core.Symbol(null, "result", "result", -1239343558, null), new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentArrayMap(null, 
-      1, [new cljs.core.Keyword(null, "key", "key", -1516042587), 1], null), new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null, "key", "key", -1516042587), 1, new cljs.core.Keyword(null, "foo", "foo", 1268894036), 2], null), new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null, "key", "key", -1516042587), "one", new cljs.core.Keyword(null, "foo", "foo", 1268894036), 2], null)], null)), new cljs.core.Keyword(null, "actual", "actual", 107306363), cljs.core._conj.call(null, 
-      cljs.core._conj.call(null, cljs.core.List.EMPTY, cljs.core.cons.call(null, new cljs.core.Symbol(null, "\x3d", "\x3d", -1501502141, null), values__9163__auto__)), new cljs.core.Symbol(null, "not", "not", 1044554643, null)), new cljs.core.Keyword(null, "message", "message", -406056002), null], null));
+      cljs.test.do_report.call(null, new cljs.core.PersistentArrayMap(null, 4, [new cljs.core.Keyword(null, "type", "type", 1174270348), new cljs.core.Keyword(null, "fail", "fail", 1706214930), new cljs.core.Keyword(null, "expected", "expected", 1583670997), cljs.core.list(new cljs.core.Symbol(null, "\x3d", "\x3d", -1501502141, null), new cljs.core.Symbol(null, "s", "s", -948495851, null), new cljs.core.Symbol(null, "expected-states", "expected-states", 1332478011, null)), new cljs.core.Keyword(null, 
+      "actual", "actual", 107306363), cljs.core._conj.call(null, cljs.core._conj.call(null, cljs.core.List.EMPTY, cljs.core.cons.call(null, new cljs.core.Symbol(null, "\x3d", "\x3d", -1501502141, null), values__9163__auto__)), new cljs.core.Symbol(null, "not", "not", 1044554643, null)), new cljs.core.Keyword(null, "message", "message", -406056002), null], null));
     }
     return result__9164__auto__;
-  } catch (e9373) {
-    var t__9201__auto__ = e9373;
-    return cljs.test.do_report.call(null, new cljs.core.PersistentArrayMap(null, 4, [new cljs.core.Keyword(null, "type", "type", 1174270348), new cljs.core.Keyword(null, "error", "error", -978969032), new cljs.core.Keyword(null, "expected", "expected", 1583670997), cljs.core.list(new cljs.core.Symbol(null, "\x3d", "\x3d", -1501502141, null), new cljs.core.Symbol(null, "result", "result", -1239343558, null), new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentArrayMap(null, 
-    1, [new cljs.core.Keyword(null, "key", "key", -1516042587), 1], null), new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null, "key", "key", -1516042587), 1, new cljs.core.Keyword(null, "foo", "foo", 1268894036), 2], null), new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null, "key", "key", -1516042587), "one", new cljs.core.Keyword(null, "foo", "foo", 1268894036), 2], null)], null)), new cljs.core.Keyword(null, "actual", "actual", 107306363), t__9201__auto__, 
-    new cljs.core.Keyword(null, "message", "message", -406056002), null], null));
+  } catch (e12940) {
+    var t__9201__auto__ = e12940;
+    return cljs.test.do_report.call(null, new cljs.core.PersistentArrayMap(null, 4, [new cljs.core.Keyword(null, "type", "type", 1174270348), new cljs.core.Keyword(null, "error", "error", -978969032), new cljs.core.Keyword(null, "expected", "expected", 1583670997), cljs.core.list(new cljs.core.Symbol(null, "\x3d", "\x3d", -1501502141, null), new cljs.core.Symbol(null, "s", "s", -948495851, null), new cljs.core.Symbol(null, "expected-states", "expected-states", 1332478011, null)), new cljs.core.Keyword(null, 
+    "actual", "actual", 107306363), t__9201__auto__, new cljs.core.Keyword(null, "message", "message", -406056002), null], null));
   }
 };
-kierros.util_test.sequence_scan_two_amendments.cljs$lang$var = new cljs.core.Var(function() {
-  return kierros.util_test.sequence_scan_two_amendments;
-}, new cljs.core.Symbol("kierros.util-test", "sequence-scan-two-amendments", "kierros.util-test/sequence-scan-two-amendments", 1642744861, null), cljs.core.PersistentHashMap.fromArrays([new cljs.core.Keyword(null, "ns", "ns", 441598760), new cljs.core.Keyword(null, "name", "name", 1843675177), new cljs.core.Keyword(null, "file", "file", -1269645878), new cljs.core.Keyword(null, "end-column", "end-column", 1425389514), new cljs.core.Keyword(null, "column", "column", 2078222095), new cljs.core.Keyword(null, 
-"line", "line", 212345235), new cljs.core.Keyword(null, "end-line", "end-line", 1837326455), new cljs.core.Keyword(null, "arglists", "arglists", 1661989754), new cljs.core.Keyword(null, "doc", "doc", 1913296891), new cljs.core.Keyword(null, "test", "test", 577538877)], [new cljs.core.Symbol(null, "kierros.util-test", "kierros.util-test", -56858064, null), new cljs.core.Symbol(null, "sequence-scan-two-amendments", "sequence-scan-two-amendments", 1285188951, null), "test/kierros/util_test.cljs", 38, 
-1, 23, 23, cljs.core.List.EMPTY, null, cljs.core.truth_(kierros.util_test.sequence_scan_two_amendments) ? kierros.util_test.sequence_scan_two_amendments.cljs$lang$test : null]));
+kierros.util_test.scan_amendments.cljs$lang$var = new cljs.core.Var(function() {
+  return kierros.util_test.scan_amendments;
+}, new cljs.core.Symbol("kierros.util-test", "scan-amendments", "kierros.util-test/scan-amendments", 612872768, null), cljs.core.PersistentHashMap.fromArrays([new cljs.core.Keyword(null, "ns", "ns", 441598760), new cljs.core.Keyword(null, "name", "name", 1843675177), new cljs.core.Keyword(null, "file", "file", -1269645878), new cljs.core.Keyword(null, "end-column", "end-column", 1425389514), new cljs.core.Keyword(null, "column", "column", 2078222095), new cljs.core.Keyword(null, "line", "line", 212345235), 
+new cljs.core.Keyword(null, "end-line", "end-line", 1837326455), new cljs.core.Keyword(null, "arglists", "arglists", 1661989754), new cljs.core.Keyword(null, "doc", "doc", 1913296891), new cljs.core.Keyword(null, "test", "test", 577538877)], [new cljs.core.Symbol(null, "kierros.util-test", "kierros.util-test", -56858064, null), new cljs.core.Symbol(null, "scan-amendments", "scan-amendments", 257397382, null), "test/kierros/util_test.cljs", 25, 1, 29, 29, cljs.core.List.EMPTY, null, cljs.core.truth_(kierros.util_test.scan_amendments) ? 
+kierros.util_test.scan_amendments.cljs$lang$test : null]));
+kierros.util_test.scan_amendments_async = function kierros$util_test$scan_amendments_async() {
+  return cljs.test.test_var.call(null, kierros$util_test$scan_amendments_async.cljs$lang$var);
+};
+kierros.util_test.scan_amendments_async.cljs$lang$test = function() {
+  if (typeof kierros.util_test.t_kierros$util_test12941 !== "undefined") {
+  } else {
+    kierros.util_test.t_kierros$util_test12941 = function(meta12942) {
+      this.meta12942 = meta12942;
+      this.cljs$lang$protocol_mask$partition0$ = 393217;
+      this.cljs$lang$protocol_mask$partition1$ = 0;
+    };
+    kierros.util_test.t_kierros$util_test12941.prototype.cljs$core$IWithMeta$_with_meta$arity$2 = function(_12943, meta12942__$1) {
+      var self__ = this;
+      var _12943__$1 = this;
+      return new kierros.util_test.t_kierros$util_test12941(meta12942__$1);
+    };
+    kierros.util_test.t_kierros$util_test12941.prototype.cljs$core$IMeta$_meta$arity$1 = function(_12943) {
+      var self__ = this;
+      var _12943__$1 = this;
+      return self__.meta12942;
+    };
+    kierros.util_test.t_kierros$util_test12941.prototype.cljs$test$IAsyncTest$ = true;
+    kierros.util_test.t_kierros$util_test12941.prototype.call = function(self__, done) {
+      var self__ = this;
+      var self____$1 = this;
+      var ___9231__auto__ = self____$1;
+      var c = cljs.core.async.chan.call(null, 1, kierros.util.scan.call(null, kierros.util_test.amend_state));
+      var _ = cljs.core.async.onto_chan.call(null, c, kierros.util_test.init_PLUS_amendments);
+      var r = cljs.core.async.into.call(null, cljs.core.PersistentVector.EMPTY, c);
+      var c__10663__auto__ = cljs.core.async.chan.call(null, 1);
+      cljs.core.async.impl.dispatch.run.call(null, function(c__10663__auto__, c, _, r, ___9231__auto__, self____$1) {
+        return function() {
+          var f__10664__auto__ = function() {
+            var switch__10598__auto__ = function(c__10663__auto__, c, _, r, ___9231__auto__, self____$1) {
+              return function(state_12985) {
+                var state_val_12986 = state_12985[1];
+                if (state_val_12986 === 1) {
+                  var state_12985__$1 = state_12985;
+                  var statearr_12987_13065 = state_12985__$1;
+                  statearr_12987_13065[2] = null;
+                  statearr_12987_13065[1] = 4;
+                  return new cljs.core.Keyword(null, "recur", "recur", -437573268);
+                } else {
+                  if (state_val_12986 === 2) {
+                    var inst_12982 = state_12985[2];
+                    var inst_12983 = done.call(null);
+                    var state_12985__$1 = function() {
+                      var statearr_12988 = state_12985;
+                      statearr_12988[7] = inst_12982;
+                      return statearr_12988;
+                    }();
+                    return cljs.core.async.impl.ioc_helpers.return_chan.call(null, state_12985__$1, inst_12983);
+                  } else {
+                    if (state_val_12986 === 3) {
+                      var inst_12945 = state_12985[2];
+                      var inst_12946 = [new cljs.core.Keyword(null, "type", "type", 1174270348), new cljs.core.Keyword(null, "expected", "expected", 1583670997), new cljs.core.Keyword(null, "actual", "actual", 107306363), new cljs.core.Keyword(null, "message", "message", -406056002)];
+                      var inst_12947 = cljs.core.list(new cljs.core.Symbol(null, "\x3d", "\x3d", -1501502141, null), cljs.core.list(new cljs.core.Symbol(null, "\x3c!", "\x3c!", -1961915773, null), new cljs.core.Symbol(null, "r", "r", 1169147337, null)), new cljs.core.Symbol(null, "expected-states", "expected-states", 1332478011, null));
+                      var inst_12948 = [new cljs.core.Keyword(null, "error", "error", -978969032), inst_12947, inst_12945, null];
+                      var inst_12949 = cljs.core.PersistentHashMap.fromArrays(inst_12946, inst_12948);
+                      var inst_12950 = cljs.test.do_report.call(null, inst_12949);
+                      var state_12985__$1 = state_12985;
+                      var statearr_12989_13066 = state_12985__$1;
+                      statearr_12989_13066[2] = inst_12950;
+                      cljs.core.async.impl.ioc_helpers.process_exception.call(null, state_12985__$1);
+                      return new cljs.core.Keyword(null, "recur", "recur", -437573268);
+                    } else {
+                      if (state_val_12986 === 4) {
+                        var ___$1 = cljs.core.async.impl.ioc_helpers.add_exception_frame.call(null, state_12985, 3, new cljs.core.Keyword(null, "default", "default", -1987822328), null, 2);
+                        var inst_12954 = cljs.core.List.EMPTY;
+                        var inst_12955 = cljs.core._conj.call(null, inst_12954, kierros.util_test.expected_states);
+                        var state_12985__$1 = function() {
+                          var statearr_12990 = state_12985;
+                          statearr_12990[8] = inst_12955;
+                          return statearr_12990;
+                        }();
+                        return cljs.core.async.impl.ioc_helpers.take_BANG_.call(null, state_12985__$1, 5, r);
+                      } else {
+                        if (state_val_12986 === 5) {
+                          var inst_12959 = state_12985[9];
+                          var inst_12955 = state_12985[8];
+                          var inst_12958 = state_12985[10];
+                          var inst_12957 = state_12985[2];
+                          var inst_12958__$1 = cljs.core._conj.call(null, inst_12955, inst_12957);
+                          var inst_12959__$1 = cljs.core.apply.call(null, cljs.core._EQ_, inst_12958__$1);
+                          var state_12985__$1 = function() {
+                            var statearr_12991 = state_12985;
+                            statearr_12991[9] = inst_12959__$1;
+                            statearr_12991[10] = inst_12958__$1;
+                            return statearr_12991;
+                          }();
+                          if (cljs.core.truth_(inst_12959__$1)) {
+                            var statearr_12992_13067 = state_12985__$1;
+                            statearr_12992_13067[1] = 6;
+                          } else {
+                            var statearr_12993_13068 = state_12985__$1;
+                            statearr_12993_13068[1] = 7;
+                          }
+                          return new cljs.core.Keyword(null, "recur", "recur", -437573268);
+                        } else {
+                          if (state_val_12986 === 6) {
+                            var inst_12958 = state_12985[10];
+                            var inst_12961 = [new cljs.core.Keyword(null, "type", "type", 1174270348), new cljs.core.Keyword(null, "expected", "expected", 1583670997), new cljs.core.Keyword(null, "actual", "actual", 107306363), new cljs.core.Keyword(null, "message", "message", -406056002)];
+                            var inst_12962 = cljs.core.list(new cljs.core.Symbol(null, "\x3d", "\x3d", -1501502141, null), cljs.core.list(new cljs.core.Symbol(null, "\x3c!", "\x3c!", -1961915773, null), new cljs.core.Symbol(null, "r", "r", 1169147337, null)), new cljs.core.Symbol(null, "expected-states", "expected-states", 1332478011, null));
+                            var inst_12963 = cljs.core.cons.call(null, cljs.core._EQ_, inst_12958);
+                            var inst_12964 = [new cljs.core.Keyword(null, "pass", "pass", 1574159993), inst_12962, inst_12963, null];
+                            var inst_12965 = cljs.core.PersistentHashMap.fromArrays(inst_12961, inst_12964);
+                            var inst_12966 = cljs.test.do_report.call(null, inst_12965);
+                            var state_12985__$1 = state_12985;
+                            var statearr_12994_13069 = state_12985__$1;
+                            statearr_12994_13069[2] = inst_12966;
+                            statearr_12994_13069[1] = 8;
+                            return new cljs.core.Keyword(null, "recur", "recur", -437573268);
+                          } else {
+                            if (state_val_12986 === 7) {
+                              var inst_12958 = state_12985[10];
+                              var inst_12968 = [new cljs.core.Keyword(null, "type", "type", 1174270348), new cljs.core.Keyword(null, "expected", "expected", 1583670997), new cljs.core.Keyword(null, "actual", "actual", 107306363), new cljs.core.Keyword(null, "message", "message", -406056002)];
+                              var inst_12969 = cljs.core.list(new cljs.core.Symbol(null, "\x3d", "\x3d", -1501502141, null), cljs.core.list(new cljs.core.Symbol(null, "\x3c!", "\x3c!", -1961915773, null), new cljs.core.Symbol(null, "r", "r", 1169147337, null)), new cljs.core.Symbol(null, "expected-states", "expected-states", 1332478011, null));
+                              var inst_12970 = cljs.core.List.EMPTY;
+                              var inst_12971 = new cljs.core.Symbol(null, "\x3d", "\x3d", -1501502141, null);
+                              var inst_12972 = cljs.core.cons.call(null, inst_12971, inst_12958);
+                              var inst_12973 = cljs.core._conj.call(null, inst_12970, inst_12972);
+                              var inst_12974 = new cljs.core.Symbol(null, "not", "not", 1044554643, null);
+                              var inst_12975 = cljs.core._conj.call(null, inst_12973, inst_12974);
+                              var inst_12976 = [new cljs.core.Keyword(null, "fail", "fail", 1706214930), inst_12969, inst_12975, null];
+                              var inst_12977 = cljs.core.PersistentHashMap.fromArrays(inst_12968, inst_12976);
+                              var inst_12978 = cljs.test.do_report.call(null, inst_12977);
+                              var state_12985__$1 = state_12985;
+                              var statearr_12995_13070 = state_12985__$1;
+                              statearr_12995_13070[2] = inst_12978;
+                              statearr_12995_13070[1] = 8;
+                              return new cljs.core.Keyword(null, "recur", "recur", -437573268);
+                            } else {
+                              if (state_val_12986 === 8) {
+                                var inst_12959 = state_12985[9];
+                                var inst_12980 = state_12985[2];
+                                var state_12985__$1 = function() {
+                                  var statearr_12996 = state_12985;
+                                  statearr_12996[11] = inst_12980;
+                                  return statearr_12996;
+                                }();
+                                var statearr_12997_13071 = state_12985__$1;
+                                statearr_12997_13071[2] = inst_12959;
+                                cljs.core.async.impl.ioc_helpers.process_exception.call(null, state_12985__$1);
+                                return new cljs.core.Keyword(null, "recur", "recur", -437573268);
+                              } else {
+                                return null;
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              };
+            }(c__10663__auto__, c, _, r, ___9231__auto__, self____$1);
+            return function(switch__10598__auto__, c__10663__auto__, c, _, r, ___9231__auto__, self____$1) {
+              return function() {
+                var kierros$util_test$state_machine__10599__auto__ = null;
+                var kierros$util_test$state_machine__10599__auto____0 = function() {
+                  var statearr_13001 = [null, null, null, null, null, null, null, null, null, null, null, null];
+                  statearr_13001[0] = kierros$util_test$state_machine__10599__auto__;
+                  statearr_13001[1] = 1;
+                  return statearr_13001;
+                };
+                var kierros$util_test$state_machine__10599__auto____1 = function(state_12985) {
+                  while (true) {
+                    var ret_value__10600__auto__ = function() {
+                      try {
+                        while (true) {
+                          var result__10601__auto__ = switch__10598__auto__.call(null, state_12985);
+                          if (cljs.core.keyword_identical_QMARK_.call(null, result__10601__auto__, new cljs.core.Keyword(null, "recur", "recur", -437573268))) {
+                            continue;
+                          } else {
+                            return result__10601__auto__;
+                          }
+                          break;
+                        }
+                      } catch (e13002) {
+                        if (e13002 instanceof Object) {
+                          var ex__10602__auto__ = e13002;
+                          var statearr_13003_13072 = state_12985;
+                          statearr_13003_13072[5] = ex__10602__auto__;
+                          cljs.core.async.impl.ioc_helpers.process_exception.call(null, state_12985);
+                          return new cljs.core.Keyword(null, "recur", "recur", -437573268);
+                        } else {
+                          throw e13002;
+                        }
+                      }
+                    }();
+                    if (cljs.core.keyword_identical_QMARK_.call(null, ret_value__10600__auto__, new cljs.core.Keyword(null, "recur", "recur", -437573268))) {
+                      var G__13073 = state_12985;
+                      state_12985 = G__13073;
+                      continue;
+                    } else {
+                      return ret_value__10600__auto__;
+                    }
+                    break;
+                  }
+                };
+                kierros$util_test$state_machine__10599__auto__ = function(state_12985) {
+                  switch(arguments.length) {
+                    case 0:
+                      return kierros$util_test$state_machine__10599__auto____0.call(this);
+                    case 1:
+                      return kierros$util_test$state_machine__10599__auto____1.call(this, state_12985);
+                  }
+                  throw new Error("Invalid arity: " + arguments.length);
+                };
+                kierros$util_test$state_machine__10599__auto__.cljs$core$IFn$_invoke$arity$0 = kierros$util_test$state_machine__10599__auto____0;
+                kierros$util_test$state_machine__10599__auto__.cljs$core$IFn$_invoke$arity$1 = kierros$util_test$state_machine__10599__auto____1;
+                return kierros$util_test$state_machine__10599__auto__;
+              }();
+            }(switch__10598__auto__, c__10663__auto__, c, _, r, ___9231__auto__, self____$1);
+          }();
+          var state__10665__auto__ = function() {
+            var statearr_13004 = f__10664__auto__.call(null);
+            statearr_13004[cljs.core.async.impl.ioc_helpers.USER_START_IDX] = c__10663__auto__;
+            return statearr_13004;
+          }();
+          return cljs.core.async.impl.ioc_helpers.run_state_machine_wrapped.call(null, state__10665__auto__);
+        };
+      }(c__10663__auto__, c, _, r, ___9231__auto__, self____$1));
+      return c__10663__auto__;
+    };
+    kierros.util_test.t_kierros$util_test12941.prototype.apply = function(self__, args12944) {
+      var self__ = this;
+      var self____$1 = this;
+      return self____$1.call.apply(self____$1, [self____$1].concat(cljs.core.aclone.call(null, args12944)));
+    };
+    kierros.util_test.t_kierros$util_test12941.prototype.cljs$core$IFn$_invoke$arity$1 = function(done) {
+      var self__ = this;
+      var ___9231__auto__ = this;
+      var c = cljs.core.async.chan.call(null, 1, kierros.util.scan.call(null, kierros.util_test.amend_state));
+      var _ = cljs.core.async.onto_chan.call(null, c, kierros.util_test.init_PLUS_amendments);
+      var r = cljs.core.async.into.call(null, cljs.core.PersistentVector.EMPTY, c);
+      var c__10663__auto__ = cljs.core.async.chan.call(null, 1);
+      cljs.core.async.impl.dispatch.run.call(null, function(c__10663__auto__, c, _, r, ___9231__auto__) {
+        return function() {
+          var f__10664__auto__ = function() {
+            var switch__10598__auto__ = function(c__10663__auto__, c, _, r, ___9231__auto__) {
+              return function(state_13045) {
+                var state_val_13046 = state_13045[1];
+                if (state_val_13046 === 1) {
+                  var state_13045__$1 = state_13045;
+                  var statearr_13047_13074 = state_13045__$1;
+                  statearr_13047_13074[2] = null;
+                  statearr_13047_13074[1] = 4;
+                  return new cljs.core.Keyword(null, "recur", "recur", -437573268);
+                } else {
+                  if (state_val_13046 === 2) {
+                    var inst_13042 = state_13045[2];
+                    var inst_13043 = done.call(null);
+                    var state_13045__$1 = function() {
+                      var statearr_13048 = state_13045;
+                      statearr_13048[7] = inst_13042;
+                      return statearr_13048;
+                    }();
+                    return cljs.core.async.impl.ioc_helpers.return_chan.call(null, state_13045__$1, inst_13043);
+                  } else {
+                    if (state_val_13046 === 3) {
+                      var inst_13005 = state_13045[2];
+                      var inst_13006 = [new cljs.core.Keyword(null, "type", "type", 1174270348), new cljs.core.Keyword(null, "expected", "expected", 1583670997), new cljs.core.Keyword(null, "actual", "actual", 107306363), new cljs.core.Keyword(null, "message", "message", -406056002)];
+                      var inst_13007 = cljs.core.list(new cljs.core.Symbol(null, "\x3d", "\x3d", -1501502141, null), cljs.core.list(new cljs.core.Symbol(null, "\x3c!", "\x3c!", -1961915773, null), new cljs.core.Symbol(null, "r", "r", 1169147337, null)), new cljs.core.Symbol(null, "expected-states", "expected-states", 1332478011, null));
+                      var inst_13008 = [new cljs.core.Keyword(null, "error", "error", -978969032), inst_13007, inst_13005, null];
+                      var inst_13009 = cljs.core.PersistentHashMap.fromArrays(inst_13006, inst_13008);
+                      var inst_13010 = cljs.test.do_report.call(null, inst_13009);
+                      var state_13045__$1 = state_13045;
+                      var statearr_13049_13075 = state_13045__$1;
+                      statearr_13049_13075[2] = inst_13010;
+                      cljs.core.async.impl.ioc_helpers.process_exception.call(null, state_13045__$1);
+                      return new cljs.core.Keyword(null, "recur", "recur", -437573268);
+                    } else {
+                      if (state_val_13046 === 4) {
+                        var ___$1 = cljs.core.async.impl.ioc_helpers.add_exception_frame.call(null, state_13045, 3, new cljs.core.Keyword(null, "default", "default", -1987822328), null, 2);
+                        var inst_13014 = cljs.core.List.EMPTY;
+                        var inst_13015 = cljs.core._conj.call(null, inst_13014, kierros.util_test.expected_states);
+                        var state_13045__$1 = function() {
+                          var statearr_13050 = state_13045;
+                          statearr_13050[8] = inst_13015;
+                          return statearr_13050;
+                        }();
+                        return cljs.core.async.impl.ioc_helpers.take_BANG_.call(null, state_13045__$1, 5, r);
+                      } else {
+                        if (state_val_13046 === 5) {
+                          var inst_13019 = state_13045[9];
+                          var inst_13015 = state_13045[8];
+                          var inst_13018 = state_13045[10];
+                          var inst_13017 = state_13045[2];
+                          var inst_13018__$1 = cljs.core._conj.call(null, inst_13015, inst_13017);
+                          var inst_13019__$1 = cljs.core.apply.call(null, cljs.core._EQ_, inst_13018__$1);
+                          var state_13045__$1 = function() {
+                            var statearr_13051 = state_13045;
+                            statearr_13051[9] = inst_13019__$1;
+                            statearr_13051[10] = inst_13018__$1;
+                            return statearr_13051;
+                          }();
+                          if (cljs.core.truth_(inst_13019__$1)) {
+                            var statearr_13052_13076 = state_13045__$1;
+                            statearr_13052_13076[1] = 6;
+                          } else {
+                            var statearr_13053_13077 = state_13045__$1;
+                            statearr_13053_13077[1] = 7;
+                          }
+                          return new cljs.core.Keyword(null, "recur", "recur", -437573268);
+                        } else {
+                          if (state_val_13046 === 6) {
+                            var inst_13018 = state_13045[10];
+                            var inst_13021 = [new cljs.core.Keyword(null, "type", "type", 1174270348), new cljs.core.Keyword(null, "expected", "expected", 1583670997), new cljs.core.Keyword(null, "actual", "actual", 107306363), new cljs.core.Keyword(null, "message", "message", -406056002)];
+                            var inst_13022 = cljs.core.list(new cljs.core.Symbol(null, "\x3d", "\x3d", -1501502141, null), cljs.core.list(new cljs.core.Symbol(null, "\x3c!", "\x3c!", -1961915773, null), new cljs.core.Symbol(null, "r", "r", 1169147337, null)), new cljs.core.Symbol(null, "expected-states", "expected-states", 1332478011, null));
+                            var inst_13023 = cljs.core.cons.call(null, cljs.core._EQ_, inst_13018);
+                            var inst_13024 = [new cljs.core.Keyword(null, "pass", "pass", 1574159993), inst_13022, inst_13023, null];
+                            var inst_13025 = cljs.core.PersistentHashMap.fromArrays(inst_13021, inst_13024);
+                            var inst_13026 = cljs.test.do_report.call(null, inst_13025);
+                            var state_13045__$1 = state_13045;
+                            var statearr_13054_13078 = state_13045__$1;
+                            statearr_13054_13078[2] = inst_13026;
+                            statearr_13054_13078[1] = 8;
+                            return new cljs.core.Keyword(null, "recur", "recur", -437573268);
+                          } else {
+                            if (state_val_13046 === 7) {
+                              var inst_13018 = state_13045[10];
+                              var inst_13028 = [new cljs.core.Keyword(null, "type", "type", 1174270348), new cljs.core.Keyword(null, "expected", "expected", 1583670997), new cljs.core.Keyword(null, "actual", "actual", 107306363), new cljs.core.Keyword(null, "message", "message", -406056002)];
+                              var inst_13029 = cljs.core.list(new cljs.core.Symbol(null, "\x3d", "\x3d", -1501502141, null), cljs.core.list(new cljs.core.Symbol(null, "\x3c!", "\x3c!", -1961915773, null), new cljs.core.Symbol(null, "r", "r", 1169147337, null)), new cljs.core.Symbol(null, "expected-states", "expected-states", 1332478011, null));
+                              var inst_13030 = cljs.core.List.EMPTY;
+                              var inst_13031 = new cljs.core.Symbol(null, "\x3d", "\x3d", -1501502141, null);
+                              var inst_13032 = cljs.core.cons.call(null, inst_13031, inst_13018);
+                              var inst_13033 = cljs.core._conj.call(null, inst_13030, inst_13032);
+                              var inst_13034 = new cljs.core.Symbol(null, "not", "not", 1044554643, null);
+                              var inst_13035 = cljs.core._conj.call(null, inst_13033, inst_13034);
+                              var inst_13036 = [new cljs.core.Keyword(null, "fail", "fail", 1706214930), inst_13029, inst_13035, null];
+                              var inst_13037 = cljs.core.PersistentHashMap.fromArrays(inst_13028, inst_13036);
+                              var inst_13038 = cljs.test.do_report.call(null, inst_13037);
+                              var state_13045__$1 = state_13045;
+                              var statearr_13055_13079 = state_13045__$1;
+                              statearr_13055_13079[2] = inst_13038;
+                              statearr_13055_13079[1] = 8;
+                              return new cljs.core.Keyword(null, "recur", "recur", -437573268);
+                            } else {
+                              if (state_val_13046 === 8) {
+                                var inst_13019 = state_13045[9];
+                                var inst_13040 = state_13045[2];
+                                var state_13045__$1 = function() {
+                                  var statearr_13056 = state_13045;
+                                  statearr_13056[11] = inst_13040;
+                                  return statearr_13056;
+                                }();
+                                var statearr_13057_13080 = state_13045__$1;
+                                statearr_13057_13080[2] = inst_13019;
+                                cljs.core.async.impl.ioc_helpers.process_exception.call(null, state_13045__$1);
+                                return new cljs.core.Keyword(null, "recur", "recur", -437573268);
+                              } else {
+                                return null;
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              };
+            }(c__10663__auto__, c, _, r, ___9231__auto__);
+            return function(switch__10598__auto__, c__10663__auto__, c, _, r, ___9231__auto__) {
+              return function() {
+                var kierros$util_test$state_machine__10599__auto__ = null;
+                var kierros$util_test$state_machine__10599__auto____0 = function() {
+                  var statearr_13061 = [null, null, null, null, null, null, null, null, null, null, null, null];
+                  statearr_13061[0] = kierros$util_test$state_machine__10599__auto__;
+                  statearr_13061[1] = 1;
+                  return statearr_13061;
+                };
+                var kierros$util_test$state_machine__10599__auto____1 = function(state_13045) {
+                  while (true) {
+                    var ret_value__10600__auto__ = function() {
+                      try {
+                        while (true) {
+                          var result__10601__auto__ = switch__10598__auto__.call(null, state_13045);
+                          if (cljs.core.keyword_identical_QMARK_.call(null, result__10601__auto__, new cljs.core.Keyword(null, "recur", "recur", -437573268))) {
+                            continue;
+                          } else {
+                            return result__10601__auto__;
+                          }
+                          break;
+                        }
+                      } catch (e13062) {
+                        if (e13062 instanceof Object) {
+                          var ex__10602__auto__ = e13062;
+                          var statearr_13063_13081 = state_13045;
+                          statearr_13063_13081[5] = ex__10602__auto__;
+                          cljs.core.async.impl.ioc_helpers.process_exception.call(null, state_13045);
+                          return new cljs.core.Keyword(null, "recur", "recur", -437573268);
+                        } else {
+                          throw e13062;
+                        }
+                      }
+                    }();
+                    if (cljs.core.keyword_identical_QMARK_.call(null, ret_value__10600__auto__, new cljs.core.Keyword(null, "recur", "recur", -437573268))) {
+                      var G__13082 = state_13045;
+                      state_13045 = G__13082;
+                      continue;
+                    } else {
+                      return ret_value__10600__auto__;
+                    }
+                    break;
+                  }
+                };
+                kierros$util_test$state_machine__10599__auto__ = function(state_13045) {
+                  switch(arguments.length) {
+                    case 0:
+                      return kierros$util_test$state_machine__10599__auto____0.call(this);
+                    case 1:
+                      return kierros$util_test$state_machine__10599__auto____1.call(this, state_13045);
+                  }
+                  throw new Error("Invalid arity: " + arguments.length);
+                };
+                kierros$util_test$state_machine__10599__auto__.cljs$core$IFn$_invoke$arity$0 = kierros$util_test$state_machine__10599__auto____0;
+                kierros$util_test$state_machine__10599__auto__.cljs$core$IFn$_invoke$arity$1 = kierros$util_test$state_machine__10599__auto____1;
+                return kierros$util_test$state_machine__10599__auto__;
+              }();
+            }(switch__10598__auto__, c__10663__auto__, c, _, r, ___9231__auto__);
+          }();
+          var state__10665__auto__ = function() {
+            var statearr_13064 = f__10664__auto__.call(null);
+            statearr_13064[cljs.core.async.impl.ioc_helpers.USER_START_IDX] = c__10663__auto__;
+            return statearr_13064;
+          }();
+          return cljs.core.async.impl.ioc_helpers.run_state_machine_wrapped.call(null, state__10665__auto__);
+        };
+      }(c__10663__auto__, c, _, r, ___9231__auto__));
+      return c__10663__auto__;
+    };
+    kierros.util_test.t_kierros$util_test12941.getBasis = function() {
+      return new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Symbol(null, "meta12942", "meta12942", -545778386, null)], null);
+    };
+    kierros.util_test.t_kierros$util_test12941.cljs$lang$type = true;
+    kierros.util_test.t_kierros$util_test12941.cljs$lang$ctorStr = "kierros.util-test/t_kierros$util_test12941";
+    kierros.util_test.t_kierros$util_test12941.cljs$lang$ctorPrWriter = function(this__6816__auto__, writer__6817__auto__, opt__6818__auto__) {
+      return cljs.core._write.call(null, writer__6817__auto__, "kierros.util-test/t_kierros$util_test12941");
+    };
+    kierros.util_test.__GT_t_kierros$util_test12941 = function kierros$util_test$__GT_t_kierros$util_test12941(meta12942) {
+      return new kierros.util_test.t_kierros$util_test12941(meta12942);
+    };
+  }
+  return new kierros.util_test.t_kierros$util_test12941(null);
+};
+kierros.util_test.scan_amendments_async.cljs$lang$var = new cljs.core.Var(function() {
+  return kierros.util_test.scan_amendments_async;
+}, new cljs.core.Symbol("kierros.util-test", "scan-amendments-async", "kierros.util-test/scan-amendments-async", -1313423603, null), cljs.core.PersistentHashMap.fromArrays([new cljs.core.Keyword(null, "ns", "ns", 441598760), new cljs.core.Keyword(null, "name", "name", 1843675177), new cljs.core.Keyword(null, "file", "file", -1269645878), new cljs.core.Keyword(null, "end-column", "end-column", 1425389514), new cljs.core.Keyword(null, "column", "column", 2078222095), new cljs.core.Keyword(null, "line", 
+"line", 212345235), new cljs.core.Keyword(null, "end-line", "end-line", 1837326455), new cljs.core.Keyword(null, "arglists", "arglists", 1661989754), new cljs.core.Keyword(null, "doc", "doc", 1913296891), new cljs.core.Keyword(null, "test", "test", 577538877)], [new cljs.core.Symbol(null, "kierros.util-test", "kierros.util-test", -56858064, null), new cljs.core.Symbol(null, "scan-amendments-async", "scan-amendments-async", -353986485, null), "test/kierros/util_test.cljs", 31, 1, 33, 33, cljs.core.List.EMPTY, 
+null, cljs.core.truth_(kierros.util_test.scan_amendments_async) ? kierros.util_test.scan_amendments_async.cljs$lang$test : null]));
 cljs.test.run_block.call(null, function() {
-  var env9374 = cljs.test.empty_env.call(null);
-  var summary9375 = cljs.core.volatile_BANG_.call(null, new cljs.core.PersistentArrayMap(null, 5, [new cljs.core.Keyword(null, "type", "type", 1174270348), new cljs.core.Keyword(null, "summary", "summary", 380847952), new cljs.core.Keyword(null, "fail", "fail", 1706214930), 0, new cljs.core.Keyword(null, "error", "error", -978969032), 0, new cljs.core.Keyword(null, "pass", "pass", 1574159993), 0, new cljs.core.Keyword(null, "test", "test", 577538877), 0], null));
-  return cljs.core.concat.call(null, cljs.core.concat.call(null, new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [function(env9374, summary9375) {
+  var env13083 = cljs.test.empty_env.call(null);
+  var summary13084 = cljs.core.volatile_BANG_.call(null, new cljs.core.PersistentArrayMap(null, 5, [new cljs.core.Keyword(null, "type", "type", 1174270348), new cljs.core.Keyword(null, "summary", "summary", 380847952), new cljs.core.Keyword(null, "fail", "fail", 1706214930), 0, new cljs.core.Keyword(null, "error", "error", -978969032), 0, new cljs.core.Keyword(null, "pass", "pass", 1574159993), 0, new cljs.core.Keyword(null, "test", "test", 577538877), 0], null));
+  return cljs.core.concat.call(null, cljs.core.concat.call(null, new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [function(env13083, summary13084) {
     return function() {
-      cljs.test.set_env_BANG_.call(null, env9374);
+      cljs.test.set_env_BANG_.call(null, env13083);
       cljs.test.do_report.call(null, new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null, "ns", "ns", 441598760), new cljs.core.Symbol(null, "kierros.util-test", "kierros.util-test", -56858064, null), new cljs.core.Keyword(null, "type", "type", 1174270348), new cljs.core.Keyword(null, "begin-test-ns", "begin-test-ns", -1701237033)], null));
       return cljs.test.block.call(null, function() {
         var env__9267__auto__ = cljs.test.get_current_env.call(null);
-        return cljs.core.concat.call(null, new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [function(env__9267__auto__, env9374, summary9375) {
+        return cljs.core.concat.call(null, new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [function(env__9267__auto__, env13083, summary13084) {
           return function() {
             if (env__9267__auto__ == null) {
               cljs.test.set_env_BANG_.call(null, cljs.test.empty_env.call(null));
@@ -58083,23 +58535,27 @@ cljs.test.run_block.call(null, function() {
             }
             return null;
           };
-        }(env__9267__auto__, env9374, summary9375)], null), cljs.test.test_vars_block.call(null, new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Var(function() {
+        }(env__9267__auto__, env13083, summary13084)], null), cljs.test.test_vars_block.call(null, new cljs.core.PersistentVector(null, 5, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Var(function() {
           return kierros.util_test.sequence_scan_empty;
         }, new cljs.core.Symbol("kierros.util-test", "sequence-scan-empty", "kierros.util-test/sequence-scan-empty", -234516681, null), cljs.core.PersistentHashMap.fromArrays([new cljs.core.Keyword(null, "ns", "ns", 441598760), new cljs.core.Keyword(null, "name", "name", 1843675177), new cljs.core.Keyword(null, "file", "file", -1269645878), new cljs.core.Keyword(null, "end-column", "end-column", 1425389514), new cljs.core.Keyword(null, "column", "column", 2078222095), new cljs.core.Keyword(null, 
-        "line", "line", 212345235), new cljs.core.Keyword(null, "end-line", "end-line", 1837326455), new cljs.core.Keyword(null, "arglists", "arglists", 1661989754), new cljs.core.Keyword(null, "doc", "doc", 1913296891), new cljs.core.Keyword(null, "test", "test", 577538877)], [new cljs.core.Symbol(null, "kierros.util-test", "kierros.util-test", -56858064, null), new cljs.core.Symbol(null, "sequence-scan-empty", "sequence-scan-empty", 154513521, null), "test/kierros/util_test.cljs", 29, 1, 7, 7, 
+        "line", "line", 212345235), new cljs.core.Keyword(null, "end-line", "end-line", 1837326455), new cljs.core.Keyword(null, "arglists", "arglists", 1661989754), new cljs.core.Keyword(null, "doc", "doc", 1913296891), new cljs.core.Keyword(null, "test", "test", 577538877)], [new cljs.core.Symbol(null, "kierros.util-test", "kierros.util-test", -56858064, null), new cljs.core.Symbol(null, "sequence-scan-empty", "sequence-scan-empty", 154513521, null), "test/kierros/util_test.cljs", 29, 1, 10, 10, 
         cljs.core.List.EMPTY, null, cljs.core.truth_(kierros.util_test.sequence_scan_empty) ? kierros.util_test.sequence_scan_empty.cljs$lang$test : null])), new cljs.core.Var(function() {
           return kierros.util_test.sequence_scan_singleton;
         }, new cljs.core.Symbol("kierros.util-test", "sequence-scan-singleton", "kierros.util-test/sequence-scan-singleton", 746187083, null), cljs.core.PersistentHashMap.fromArrays([new cljs.core.Keyword(null, "ns", "ns", 441598760), new cljs.core.Keyword(null, "name", "name", 1843675177), new cljs.core.Keyword(null, "file", "file", -1269645878), new cljs.core.Keyword(null, "end-column", "end-column", 1425389514), new cljs.core.Keyword(null, "column", "column", 2078222095), new cljs.core.Keyword(null, 
         "line", "line", 212345235), new cljs.core.Keyword(null, "end-line", "end-line", 1837326455), new cljs.core.Keyword(null, "arglists", "arglists", 1661989754), new cljs.core.Keyword(null, "doc", "doc", 1913296891), new cljs.core.Keyword(null, "test", "test", 577538877)], [new cljs.core.Symbol(null, "kierros.util-test", "kierros.util-test", -56858064, null), new cljs.core.Symbol(null, "sequence-scan-singleton", "sequence-scan-singleton", 189384717, null), "test/kierros/util_test.cljs", 33, 1, 
-        12, 12, cljs.core.List.EMPTY, null, cljs.core.truth_(kierros.util_test.sequence_scan_singleton) ? kierros.util_test.sequence_scan_singleton.cljs$lang$test : null])), new cljs.core.Var(function() {
+        15, 15, cljs.core.List.EMPTY, null, cljs.core.truth_(kierros.util_test.sequence_scan_singleton) ? kierros.util_test.sequence_scan_singleton.cljs$lang$test : null])), new cljs.core.Var(function() {
           return kierros.util_test.sequence_scan_one_amendment;
         }, new cljs.core.Symbol("kierros.util-test", "sequence-scan-one-amendment", "kierros.util-test/sequence-scan-one-amendment", 588485599, null), cljs.core.PersistentHashMap.fromArrays([new cljs.core.Keyword(null, "ns", "ns", 441598760), new cljs.core.Keyword(null, "name", "name", 1843675177), new cljs.core.Keyword(null, "file", "file", -1269645878), new cljs.core.Keyword(null, "end-column", "end-column", 1425389514), new cljs.core.Keyword(null, "column", "column", 2078222095), new cljs.core.Keyword(null, 
         "line", "line", 212345235), new cljs.core.Keyword(null, "end-line", "end-line", 1837326455), new cljs.core.Keyword(null, "arglists", "arglists", 1661989754), new cljs.core.Keyword(null, "doc", "doc", 1913296891), new cljs.core.Keyword(null, "test", "test", 577538877)], [new cljs.core.Symbol(null, "kierros.util-test", "kierros.util-test", -56858064, null), new cljs.core.Symbol(null, "sequence-scan-one-amendment", "sequence-scan-one-amendment", 1550020625, null), "test/kierros/util_test.cljs", 
-        37, 1, 17, 17, cljs.core.List.EMPTY, null, cljs.core.truth_(kierros.util_test.sequence_scan_one_amendment) ? kierros.util_test.sequence_scan_one_amendment.cljs$lang$test : null])), new cljs.core.Var(function() {
-          return kierros.util_test.sequence_scan_two_amendments;
-        }, new cljs.core.Symbol("kierros.util-test", "sequence-scan-two-amendments", "kierros.util-test/sequence-scan-two-amendments", 1642744861, null), cljs.core.PersistentHashMap.fromArrays([new cljs.core.Keyword(null, "ns", "ns", 441598760), new cljs.core.Keyword(null, "name", "name", 1843675177), new cljs.core.Keyword(null, "file", "file", -1269645878), new cljs.core.Keyword(null, "end-column", "end-column", 1425389514), new cljs.core.Keyword(null, "column", "column", 2078222095), new cljs.core.Keyword(null, 
-        "line", "line", 212345235), new cljs.core.Keyword(null, "end-line", "end-line", 1837326455), new cljs.core.Keyword(null, "arglists", "arglists", 1661989754), new cljs.core.Keyword(null, "doc", "doc", 1913296891), new cljs.core.Keyword(null, "test", "test", 577538877)], [new cljs.core.Symbol(null, "kierros.util-test", "kierros.util-test", -56858064, null), new cljs.core.Symbol(null, "sequence-scan-two-amendments", "sequence-scan-two-amendments", 1285188951, null), "test/kierros/util_test.cljs", 
-        38, 1, 23, 23, cljs.core.List.EMPTY, null, cljs.core.truth_(kierros.util_test.sequence_scan_two_amendments) ? kierros.util_test.sequence_scan_two_amendments.cljs$lang$test : null]))], null)), new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [function(env__9267__auto__, env9374, summary9375) {
+        37, 1, 20, 20, cljs.core.List.EMPTY, null, cljs.core.truth_(kierros.util_test.sequence_scan_one_amendment) ? kierros.util_test.sequence_scan_one_amendment.cljs$lang$test : null])), new cljs.core.Var(function() {
+          return kierros.util_test.scan_amendments;
+        }, new cljs.core.Symbol("kierros.util-test", "scan-amendments", "kierros.util-test/scan-amendments", 612872768, null), cljs.core.PersistentHashMap.fromArrays([new cljs.core.Keyword(null, "ns", "ns", 441598760), new cljs.core.Keyword(null, "name", "name", 1843675177), new cljs.core.Keyword(null, "file", "file", -1269645878), new cljs.core.Keyword(null, "end-column", "end-column", 1425389514), new cljs.core.Keyword(null, "column", "column", 2078222095), new cljs.core.Keyword(null, "line", "line", 
+        212345235), new cljs.core.Keyword(null, "end-line", "end-line", 1837326455), new cljs.core.Keyword(null, "arglists", "arglists", 1661989754), new cljs.core.Keyword(null, "doc", "doc", 1913296891), new cljs.core.Keyword(null, "test", "test", 577538877)], [new cljs.core.Symbol(null, "kierros.util-test", "kierros.util-test", -56858064, null), new cljs.core.Symbol(null, "scan-amendments", "scan-amendments", 257397382, null), "test/kierros/util_test.cljs", 25, 1, 29, 29, cljs.core.List.EMPTY, 
+        null, cljs.core.truth_(kierros.util_test.scan_amendments) ? kierros.util_test.scan_amendments.cljs$lang$test : null])), new cljs.core.Var(function() {
+          return kierros.util_test.scan_amendments_async;
+        }, new cljs.core.Symbol("kierros.util-test", "scan-amendments-async", "kierros.util-test/scan-amendments-async", -1313423603, null), cljs.core.PersistentHashMap.fromArrays([new cljs.core.Keyword(null, "ns", "ns", 441598760), new cljs.core.Keyword(null, "name", "name", 1843675177), new cljs.core.Keyword(null, "file", "file", -1269645878), new cljs.core.Keyword(null, "end-column", "end-column", 1425389514), new cljs.core.Keyword(null, "column", "column", 2078222095), new cljs.core.Keyword(null, 
+        "line", "line", 212345235), new cljs.core.Keyword(null, "end-line", "end-line", 1837326455), new cljs.core.Keyword(null, "arglists", "arglists", 1661989754), new cljs.core.Keyword(null, "doc", "doc", 1913296891), new cljs.core.Keyword(null, "test", "test", 577538877)], [new cljs.core.Symbol(null, "kierros.util-test", "kierros.util-test", -56858064, null), new cljs.core.Symbol(null, "scan-amendments-async", "scan-amendments-async", -353986485, null), "test/kierros/util_test.cljs", 31, 1, 33, 
+        33, cljs.core.List.EMPTY, null, cljs.core.truth_(kierros.util_test.scan_amendments_async) ? kierros.util_test.scan_amendments_async.cljs$lang$test : null]))], null)), new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [function(env__9267__auto__, env13083, summary13084) {
           return function() {
             if (env__9267__auto__ == null) {
               return cljs.test.clear_env_BANG_.call(null);
@@ -58107,25 +58563,25 @@ cljs.test.run_block.call(null, function() {
               return null;
             }
           };
-        }(env__9267__auto__, env9374, summary9375)], null));
+        }(env__9267__auto__, env13083, summary13084)], null));
       }());
     };
-  }(env9374, summary9375), function(env9374, summary9375) {
+  }(env13083, summary13084), function(env13083, summary13084) {
     return function() {
       return cljs.test.do_report.call(null, new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null, "ns", "ns", 441598760), new cljs.core.Symbol(null, "kierros.util-test", "kierros.util-test", -56858064, null), new cljs.core.Keyword(null, "type", "type", 1174270348), new cljs.core.Keyword(null, "end-test-ns", "end-test-ns", 1620675645)], null));
     };
-  }(env9374, summary9375)], null), new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [function(env9374, summary9375) {
+  }(env13083, summary13084)], null), new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [function(env13083, summary13084) {
     return function() {
-      return cljs.core._vreset_BANG_.call(null, summary9375, cljs.core.partial.call(null, cljs.core.merge_with, cljs.core._PLUS_).call(null, cljs.core._deref.call(null, summary9375), (new cljs.core.Keyword(null, "report-counters", "report-counters", -1702609242)).cljs$core$IFn$_invoke$arity$1(cljs.test.get_and_clear_env_BANG_.call(null))));
+      return cljs.core._vreset_BANG_.call(null, summary13084, cljs.core.partial.call(null, cljs.core.merge_with, cljs.core._PLUS_).call(null, cljs.core._deref.call(null, summary13084), (new cljs.core.Keyword(null, "report-counters", "report-counters", -1702609242)).cljs$core$IFn$_invoke$arity$1(cljs.test.get_and_clear_env_BANG_.call(null))));
     };
-  }(env9374, summary9375)], null)), new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [function(env9374, summary9375) {
+  }(env13083, summary13084)], null)), new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [function(env13083, summary13084) {
     return function() {
-      cljs.test.set_env_BANG_.call(null, env9374);
-      cljs.test.do_report.call(null, cljs.core.deref.call(null, summary9375));
-      cljs.test.report.call(null, cljs.core.assoc.call(null, cljs.core.deref.call(null, summary9375), new cljs.core.Keyword(null, "type", "type", 1174270348), new cljs.core.Keyword(null, "end-run-tests", "end-run-tests", 267300563)));
+      cljs.test.set_env_BANG_.call(null, env13083);
+      cljs.test.do_report.call(null, cljs.core.deref.call(null, summary13084));
+      cljs.test.report.call(null, cljs.core.assoc.call(null, cljs.core.deref.call(null, summary13084), new cljs.core.Keyword(null, "type", "type", 1174270348), new cljs.core.Keyword(null, "end-run-tests", "end-run-tests", 267300563)));
       return cljs.test.clear_env_BANG_.call(null);
     };
-  }(env9374, summary9375)], null));
+  }(env13083, summary13084)], null));
 }());
 goog.provide("todomvc_kierros.view");
 goog.require("cljs.core");
@@ -58171,19 +58627,19 @@ todomvc_kierros.model.start_edit = function todomvc_kierros$model$start_edit(id,
     }, items);
   });
 };
-todomvc_kierros.model.end_edit = function todomvc_kierros$model$end_edit(p__20400, state) {
-  var vec__20402 = p__20400;
-  var id = cljs.core.nth.call(null, vec__20402, 0, null);
-  var text = cljs.core.nth.call(null, vec__20402, 1, null);
-  return cljs.core.update_in.call(null, state, new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null, "items", "items", 1031954938)], null), function(vec__20402, id, text) {
+todomvc_kierros.model.end_edit = function todomvc_kierros$model$end_edit(p__24822, state) {
+  var vec__24824 = p__24822;
+  var id = cljs.core.nth.call(null, vec__24824, 0, null);
+  var text = cljs.core.nth.call(null, vec__24824, 1, null);
+  return cljs.core.update_in.call(null, state, new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null, "items", "items", 1031954938)], null), function(vec__24824, id, text) {
     return function(items) {
-      return todomvc_kierros.model.modify.call(null, id, function(vec__20402, id, text) {
+      return todomvc_kierros.model.modify.call(null, id, function(vec__24824, id, text) {
         return function(item) {
           return cljs.core.assoc.call(null, item, new cljs.core.Keyword(null, "editing", "editing", 1365491601), false, new cljs.core.Keyword(null, "text", "text", -1790561697), text);
         };
-      }(vec__20402, id, text), items);
+      }(vec__24824, id, text), items);
     };
-  }(vec__20402, id, text));
+  }(vec__24824, id, text));
 };
 todomvc_kierros.model.fresh = function todomvc_kierros$model$fresh() {
   return new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null, "filter", "filter", -948537934), new cljs.core.Keyword(null, "all", "all", 892129742), new cljs.core.Keyword(null, "items", "items", 1031954938), cljs.core.PersistentVector.EMPTY], null);
@@ -58191,6 +58647,7 @@ todomvc_kierros.model.fresh = function todomvc_kierros$model$fresh() {
 goog.provide("todomvc_kierros.core");
 goog.require("cljs.core");
 goog.require("kierros.core");
+goog.require("kierros.util");
 goog.require("kierros.quiescent_DOM_driver");
 cljs.core.enable_console_print_BANG_.call(null);
 cljs.core.println.call(null, "Figgin' around like there's no tomorrow!");
