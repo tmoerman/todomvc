@@ -18,10 +18,13 @@
   ;; project root but TodoMVC wants the index.html there, so we'll
   ;; adjust (dixit Quiescent)
 
-  :clean-targets ["resources/public/js/compiled" "target"]
+  :clean-targets ^{:protect false} ["resources/public/js/compiled"
+                                    "resources/private/js/compiled"
+                                    "target"]
 
-  :cljsbuild {:builds {:dev {:source-paths ["src"]
-                             :figwheel {:on-jsload "kierros.core/on-js-reload"}
+  :cljsbuild {:builds {:dev {:source-paths ["src" "test"]
+                             ;:figwheel {:on-jsload "kierros.core/on-js-reload"}
+                             :figwheel true
                              :compiler {:main todomvc-kierros.core
                                         :asset-path "js/compiled/out"
                                         :output-dir "resources/public/js/compiled/out"
@@ -29,11 +32,11 @@
                                         :optimizations :none
                                         :source-map true}}
 
-                       :prod {:source-paths ["src"]
-                              :compiler {:output-to "main.js"
-                                         :source-map "main.js.map"
-                                         :optimizations :advanced
-                                         :pretty-print true}}
+                       ;:prod {:source-paths ["src"]
+                       ;       :compiler {:output-to "main.js"
+                       ;                  :source-map "main.js.map"
+                       ;                  :optimizations :advanced
+                       ;                  :pretty-print true}}
 
                        :test {:source-paths ["src" "test"]
                               :compiler {:output-to "resources/private/js/compiled/unit-test.js"
