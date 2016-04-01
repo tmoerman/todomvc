@@ -116,7 +116,7 @@
   (apply d/ul {:id "todo-list"} (map #(Item [% (:filter app)] channels)
                                      (:items app))))
 
-(q/defcomponent App
+(q/defcomponent App ;; view-tree
   "The root of the application"
   [app channels]
   (d/div {}

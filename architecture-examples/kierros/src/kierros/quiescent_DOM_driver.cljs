@@ -11,11 +11,9 @@
   [container]
   (fn [views-chan & args]
     (go-loop []
-             (when-let [m (<! views-chan)]
-               (do
-                 (.requestAnimationFrame
-                   js/window
-                   (fn []
-                     (q/render (:view m) (.getElementById js/document container))))))
+             (when-let [view (<! views-chan)]
+               (.requestAnimationFrame
+                 js/window
+                 (fn [] (q/render view (.getElementById js/document container)))))
              (recur))
     (chan)))

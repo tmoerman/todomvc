@@ -17,11 +17,8 @@
 (defn add-item
   "Add specified item to the state."
   [text state]
-  (let [next-state
-        (update-in state [:items] (fn [items] (-> items
-                                                  (conj (new-item text)))))]
-    (println next-state)
-    next-state))
+  (update-in state [:items] (fn [items] (-> items
+                                            (conj (new-item text))))))
 
 (defn drop-item
   "Remove item with specified id from the :items in the state."
@@ -30,6 +27,7 @@
                                              (remove (fn [item] (= id (item :id))))))))
 
 (defn- modify
+  ""
   [id update-fn items]
   (->> items
        (map (fn [item] (if (= id (:id item))

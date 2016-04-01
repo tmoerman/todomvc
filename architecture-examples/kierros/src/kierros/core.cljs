@@ -8,7 +8,7 @@
   [drivers]
   (->> drivers
        keys
-       (map (fn [name] [name (chan 10 (map (fn [x] (println name "received") x)))]))
+       (map (fn [name] [name (chan)]))
        (into {})))
 
 (defn call-drivers
@@ -34,15 +34,12 @@
 (defn run
   "Cycle.run equivalent. Accepts a main function and a map of drivers."
   [main drivers]
-  (println "hello")
   (let [sink-proxy-chans (sink-proxies drivers)
         source-chans     (call-drivers drivers sink-proxy-chans)
-        sink-chans       (main source-chans)]
-    (weld-cycle! sink-chans sink-proxy-chans)
-    (println "alrightie then!")
-
+        sink-chans       (main source-chans)
+        _                (weld-cycle! sink-chans sink-proxy-chans)]
+    (println "cycle running")
     ;; could be of use with System/Leaven components.
     #_{:sources source-chans
        :sinks   sink-chans}
-    {:run "cycle"}
     ))
