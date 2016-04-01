@@ -1,7 +1,7 @@
 (ns kierros.util-test
   "Unit tests for the scan transducer."
   (:require [kierros.util :refer [scan]]
-            [cljs.core.async :as a :refer [<! chan]]
+            [cljs.core.async :as a :refer [<! >! close! chan]]
             [cljs.test :refer-macros [deftest is testing run-tests async]])
   (:require-macros [cljs.core.async.macros :refer [go]]))
 
@@ -23,6 +23,11 @@
                (sequence (scan amend-state)))]
     (is (= s [{:key 1} {:key 1 :foo 2}]))))
 
+(deftest sequence-scan-noops
+  (let [s (->> [{:key 1} identity identity identity]
+               (sequence (scan amend-state)))]
+    (is (= s [{:key 1} {:key 1} {:key 1} {:key 1}]))))
+
 (def init+amendments [{:key 1} #(assoc % :foo 2) #(assoc % :key "one")])
 (def expected-states [{:key 1} {:key 1 :foo 2} {:key "one" :foo 2}])
 
@@ -40,4 +45,3 @@
         (done)))))
 
 (run-tests)
-

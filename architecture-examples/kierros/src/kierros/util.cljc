@@ -1,11 +1,10 @@
-(ns kierros.util
-  (:require [cljs.core.async :as a]))
+(ns kierros.util)
 
 (defn scan
   "Returns a transducer that implements scan (cfr. Scala) or reductions (cfr. Clojure) semantics."
   [f]
   (fn [xf]
-    (let [state (volatile! ::none)] ;; pattern: state scoped around function definition
+    (let [state (volatile! ::none)]
       (fn
         ([] (xf))
         ([result] (xf result))
