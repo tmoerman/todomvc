@@ -1,8 +1,13 @@
 (ns todomvc-kierros.model
   (:require [cljs-uuid-utils :refer [uuid-string make-random-uuid]]
-            [kierros.util :refer [scan]]))
+            [cljs.core.async :as a :refer [<! chan to-chan pipe]]
+            [kierros.util :refer [scan]]
+            [kierros.async :refer [chain]])
+  (:require-macros [cljs.core.async.macros :refer [go]]))
 
 ;; TODO implement state manipulation with Specter.
+
+(defn navigate [] :todo)
 
 (defn new-item
   "Construct a new item"
@@ -22,13 +27,21 @@
   (update-in state [:items] (fn [items] (->> items
                                              (remove (fn [item] (= id (item :id))))))))
 
-(defn modify
+(defn- modify
   [id update-fn items]
   (->> items
        (map (fn [item] (if (= id (:id item))
                          (update-fn item) item)))))
 
+(defn clear-completed
+  ""
+  [state]
+  (update-in state [:item] (fn [items]
+                             (->> items
+                                  (remove (fn [item] (-> item :completed true?)))))))
+
 (defn toggle-completed
+  ""
   [id state]
   (update-in state [:items] (fn [items]
                               (->> items
@@ -36,14 +49,15 @@
                                                            :completed (not (:completed item)))))))))
 
 (defn start-edit
+  ""
   [id state]
   (update-in state [:items] (fn [items]
                               (->> items
                                    (modify id (fn [item] (assoc item
                                                            :editing true)))))))
 
-
 (defn end-edit
+  ""
   [[id text] state]
   (update-in state [:items] (fn [items]
                               (->> items
@@ -51,8 +65,40 @@
                                                            :editing false
                                                            :text text)))))))
 
+(def intent-handlers
+  {:navigate         navigate
+   :add-item         add-item
+   :drop-item        drop-item
+   :clear-completed  clear-completed
+   :toggle-completed toggle-completed
+   :start-edit       start-edit
+   :end-edit         end-edit})
+
 (defn fresh
   "Returns a new, empty application state."
   []
   {:filter :all
    :items []})
+
+(def buf-or-n 10)
+
+(defn model
+  "Returns a channel representing the stream of application states."
+  [init-state intent-chans intent-handlers]
+  (let [amend-fn-chan (->> intent-chans
+                           (map (fn [[key ch]]
+                                  (when-let [intent-handler (key intent-handlers)]
+                                    (->> #(partial intent-handler %) ; fn
+                                         (map)                       ; xf
+                                         (chan buf-or-n)             ; ch
+                                         (pipe ch)))))               ; piped
+                           (remove nil?) ; only channel with handler
+                           (a/merge))
+        initial-chan  (to-chan [init-state])
+        amending-chan (->> (fn [state f] (f state)) ; fn
+                           (scan)                   ; xf
+                           (chan buf-or-n))         ; ch
+        states-chan   (-> [initial-chan amend-fn-chan]
+                          (chain)
+                          (pipe amending-chan))]
+    states-chan))
