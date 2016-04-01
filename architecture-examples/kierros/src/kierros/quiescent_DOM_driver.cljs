@@ -2,7 +2,7 @@
   "Cycle DOM driver, powered by quiescent."
   (:require [cljs.core.async :as a :refer [<! chan]]))
 
-(defn create-quiescent-DOM-driver
+(defn create-DOM-driver
   "Accepts a DOM container as rendering root.
   Returns a DOM driver powered by quiescent."
   [container]

@@ -3,6 +3,8 @@
   (:require [cljs.core.async :as a :refer [<! chan]]
             [plumbing.core :refer [map-vals]]))
 
+
+
 (defn make-sink-proxies
   "Accepts a map of drivers. Returns a map of the equivalent of Rx.ReplaySubject instance
   for each key in the driver map."
@@ -27,6 +29,7 @@
   ""
   [sink-map sink-proxy-map]
   ;; TODO connect sinks to proxies ~ pipe or something like that
+  :todo
   )
 
 (defn run
