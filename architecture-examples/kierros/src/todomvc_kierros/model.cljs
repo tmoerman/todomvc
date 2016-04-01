@@ -2,8 +2,7 @@
   (:require [cljs-uuid-utils :refer [uuid-string make-random-uuid]]
             [cljs.core.async :as a :refer [<! chan to-chan pipe]]
             [kierros.util :refer [scan]]
-            [kierros.async :refer [chain]])
-  (:require-macros [cljs.core.async.macros :refer [go]]))
+            [kierros.async :refer [chain]]))
 
 ;; TODO implement state manipulation with Specter.
 
@@ -18,8 +17,11 @@
 (defn add-item
   "Add specified item to the state."
   [text state]
-  (update-in state [:items] (fn [items] (-> items
-                                            (conj (new-item text))))))
+  (let [next-state
+        (update-in state [:items] (fn [items] (-> items
+                                                  (conj (new-item text)))))]
+    (println next-state)
+    next-state))
 
 (defn drop-item
   "Remove item with specified id from the :items in the state."
@@ -74,18 +76,18 @@
    :start-edit       start-edit
    :end-edit         end-edit})
 
-(defn fresh
+(defn init-state
   "Returns a new, empty application state."
   []
   {:filter :all
-   :items []})
+   :items [(new-item "first!")]})
 
-(def buf-or-n 10)
-
-(defn model
-  "Returns a channel representing the stream of application states."
+(defn states-chan
+  ; TODO generic enough to factored out to Kierros namespace.
+  "Returns a stream of application states, represented as a core.async channel."
   [init-state intent-chans intent-handlers]
-  (let [amend-fn-chan (->> intent-chans
+  (let [buf-or-n      10
+        amend-fn-chan (->> intent-chans
                            (map (fn [[key ch]]
                                   (when-let [intent-handler (key intent-handlers)]
                                     (->> #(partial intent-handler %) ; fn
@@ -95,10 +97,15 @@
                            (remove nil?) ; only channel with handler
                            (a/merge))
         initial-chan  (to-chan [init-state])
-        amending-chan (->> (fn [state f] (f state)) ; fn
+        result-chan   (->> (fn [state f] (f state)) ; fn
                            (scan)                   ; xf
-                           (chan buf-or-n))         ; ch
-        states-chan   (-> [initial-chan amend-fn-chan]
-                          (chain)
-                          (pipe amending-chan))]
-    states-chan))
+                           (chan buf-or-n)          ; ch
+                           (pipe (chain [initial-chan amend-fn-chan])))]
+    result-chan
+    ))
+
+
+
+(defn model
+  [init-state intent-chans]
+  (states-chan init-state intent-chans intent-handlers))

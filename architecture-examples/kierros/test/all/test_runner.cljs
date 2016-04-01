@@ -6,8 +6,7 @@
             [cljs.test :refer-macros [run-tests]]))
 
 (run-tests ;'kierros.core-test
-           ;'kierros.async-test
+           'kierros.async-test
            'kierros.util-test
-           'todomvc-kierros.model-test
-           )
+           'todomvc-kierros.model-test)
 

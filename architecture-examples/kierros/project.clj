@@ -23,8 +23,7 @@
                                     "target"]
 
   :cljsbuild {:builds {:dev {:source-paths ["src" "test"]
-                             ;:figwheel {:on-jsload "kierros.core/on-js-reload"}
-                             :figwheel true
+                             :figwheel {:on-jsload "todomvc-kierros.core/on-js-reload"}
                              :compiler {:main todomvc-kierros.core
                                         :asset-path "js/compiled/out"
                                         :output-dir "resources/public/js/compiled/out"

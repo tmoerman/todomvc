@@ -1,7 +1,7 @@
 (ns todomvc-kierros.intent
   (:require [cljs.core.async :as a :refer [<! chan dropping-buffer]]))
 
-(def intents
+(def intent-keys
   [:navigate
    :add-item
    :drop-item
@@ -10,11 +10,11 @@
    :start-edit
    :end-edit])
 
-(defn make-intent-chan [] (chan (dropping-buffer 10)))
+(defn intent-chan [] (chan (dropping-buffer 10)))
 
-(defn intent-chans
+(defn intents
   "Returns a map of event channels."
   []
-  (->> intents
-       (map (fn [key] [key (make-intent-chan)]))
+  (->> intent-keys
+       (map (fn [key] [key (intent-chan)]))
        (into {})))

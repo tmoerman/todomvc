@@ -1,3 +1,4 @@
-(ns kierros.local-storage-driver)
+(ns kierros.local-storage-driver
+  (:require [cljs.core.async :refer [<! chan]]))
 
-(defn storage-driver [] :todo)
+(defn storage-driver [pickled-chan & args] (chan))
