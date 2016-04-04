@@ -1,5 +1,5 @@
 (ns kierros.core
-  "Cycle-flavoured core functions"
+  "Cycle-flavoured core functions."
   (:require [cljs.core.async :as a :refer [<! chan]]))
 
 (defn sink-proxies

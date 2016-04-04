@@ -80,7 +80,7 @@
   {:filter :all
    :items [(new-item "first!")]})
 
-(defn states-chan
+(defn scan-to-states
   ; TODO generic enough to factored out to Kierros namespace.
   "Returns a stream of application states, represented as a core.async channel."
   [init-state intent-chans intent-handlers]
@@ -95,15 +95,12 @@
                            (remove nil?) ; only channel with handler
                            (a/merge))
         initial-chan  (to-chan [init-state])
-        result-chan   (->> (fn [state f] (f state)) ; fn
+        states-chan   (->> (fn [state f] (f state)) ; fn
                            (scan)                   ; xf
                            (chan buf-or-n)          ; ch
                            (pipe (chain [initial-chan amend-fn-chan])))]
-    result-chan
-    ))
-
-
+    states-chan))
 
 (defn model
   [init-state intent-chans]
-  (states-chan init-state intent-chans intent-handlers))
+  (scan-to-states init-state intent-chans intent-handlers))
