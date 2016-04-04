@@ -5,8 +5,8 @@
   :dependencies [[org.clojure/clojure "1.8.0"]
                  [org.clojure/clojurescript "1.8.34"]
                  [org.clojure/core.async "0.2.374" :exclusions [org.clojure/tools.reader]]
-                 [prismatic/plumbing "0.5.2"]
                  [quiescent "0.3.1"]
+                 [sablono "0.6.3"]
                  [org.clojars.franks42/cljs-uuid-utils "0.1.3"]]
 
   :plugins [[lein-figwheel "0.5.2"]

@@ -1,33 +1,33 @@
 (ns todomvc-kierros.view
   (:require [cljs.core.async :as a :refer [>! chan pipe]]
             [quiescent.core :as q :include-macros true]
-            [quiescent.dom :as d])
+            [sablono.core :as s :refer-macros [html]])
   (:require-macros [cljs.core.async.macros :refer [go]]))
 
 (defn enter-key? [evt] (= 13 (.-keyCode evt)))
 
 (q/defcomponent Header
-  [state add-item-chan]
-  (d/header {:id "header"}
-            (d/h1 {} "todos")
-            (d/input {:id          "new-todo"
-                      :placeholder "your next todo"
-                      :onKeyDown   (fn [evt]
-                                     (when (enter-key? evt)
-                                       (let [v (-> evt .-target .-value)]
-                                         (go
-                                           (>! add-item-chan v))
-                                         (-> evt .-target .-value (set! "")))))
-                      :autoFocus true})))
+  "Header component, contains the title and the todo input."
+  [state {:keys [add-item] :as intent-chans}]
+  (html [:header {:id "header"}
+         [:h1 {} "Kierros-todos"]
+         [:input {:id          "new-todo"
+                  :placeholder "your next todo"
+                  :autoFocus   true
+                  :onKeyDown   (fn [evt]
+                                 (when (enter-key? evt)
+                                   (let [v (-> evt .-target .-value)]
+                                     (go
+                                       (>! add-item v))
+                                     (-> evt .-target .-value (set! "")))))}]]))
 
 (q/defcomponent Root
-  [state {:keys [navigate add-item drop-item clear-completed toggle-completed start-edit end-edit]}]
-  (d/div {:id "main"}
-         (Header state add-item)
-         (apply d/ul {:id      "todo-list"
-                      :checked true} (->> state
-                                          :items
-                                          (map #(d/li {} (d/label {} (:text %))))))))
+  [state intent-chans]
+  (html [:div {:id "main"}
+         (Header state intent-chans)
+         [:ul {:id "todo-list"}
+          (->> (:items state)
+               (map (fn [i] [:li {} [:label {} (:text i)]])))]]))
 
 (defn view
   "Returns a stream of view trees, represented as a core.async channel."
