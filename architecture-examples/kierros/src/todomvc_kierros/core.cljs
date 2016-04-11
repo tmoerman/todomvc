@@ -22,7 +22,10 @@
     {:DOM     views-chan
      :STORAGE pickled-chan}))
 
-(cycle/run
-  todos-cycle-main
-  {:DOM     (dom/make-DOM-driver "todoapp")
-   :STORAGE lst/storage-driver})
+(defn run
+  "Application main entry point"
+  []
+  (cycle/run
+    todos-cycle-main
+    {:DOM     (dom/make-DOM-driver "todoapp")
+     :STORAGE lst/storage-driver}))
