@@ -72,7 +72,7 @@
 
 (defn view
   "Returns a stream of view trees, represented as a core.async channel."
-  [intent-chans states-chan]
+  [states-chan intent-chans]
   (let [views-chan (->> (fn [state] (Root state intent-chans)) ; fn
                         (map)                                  ; xf
                         (chan 10)                              ; ch

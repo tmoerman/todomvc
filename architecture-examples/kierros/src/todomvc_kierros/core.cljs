@@ -17,7 +17,7 @@
   (let [init-state   (m/init-state)
         intent-chans (i/intents)
         states-chan  (m/model init-state intent-chans)
-        views-chan   (v/view intent-chans states-chan)
+        views-chan   (v/view states-chan intent-chans)
         pickled-chan nil] ;; TODO serialize the states to be submitted to the storage driver
     {:DOM     views-chan
      :STORAGE pickled-chan}))
