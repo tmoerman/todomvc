@@ -9,11 +9,7 @@
 
 (enable-console-print!)
 
-(defonce c (atom 0))
-
-(defn on-js-reload [] (do
-                        (print "on-js-reload")
-                        (swap! c inc)))
+(defn on-js-reload [] (print "on-js-reload"))
 
 (defn todos-cycle-main
   "Cycle main."
