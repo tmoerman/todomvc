@@ -1,8 +1,8 @@
 (ns todomvc-kierros.model
   (:require [cljs-uuid-utils :refer [uuid-string make-random-uuid]]
             [cljs.core.async :as a :refer [<! chan to-chan pipe]]
-            [kierros.util :refer [scan]]
-            [kierros.async :refer [chain]]))
+            [kierros.model :refer [scan-to-states]]
+            [clojure.string :refer [blank?]]))
 
 ;; TODO implement state manipulation with Specter.
 
@@ -17,8 +17,10 @@
 (defn add-item
   "Add specified item to the state."
   [text state]
-  (update-in state [:items] (fn [items] (-> items
-                                            (conj (new-item text))))))
+  (if (not (blank? text))
+    (update-in state [:items] (fn [items] (-> items
+                                              (conj (new-item text)))))
+    state))
 
 (defn drop-item
   "Remove item with specified id from the :items in the state."
@@ -35,10 +37,11 @@
 
 (defn clear-completed
   ""
-  [state]
-  (update-in state [:item] (fn [items]
-                             (->> items
-                                  (remove (fn [item] (-> item :completed true?)))))))
+  [_ state]
+  (println state)
+  (update-in state [:items] (fn [items]
+                              (->> items
+                                   (remove (fn [item] (-> item :completed true?)))))))
 
 (defn toggle-completed
   ""
@@ -75,31 +78,12 @@
    :end-edit         end-edit})
 
 (defn init-state
-  "Returns a new, empty application state."
+  "Returns a new initial application state."
   []
   {:filter :all
-   :items [(new-item "first!")]})
-
-(defn scan-to-states
-  ; TODO generic enough to factored out to Kierros namespace.
-  "Returns a stream of application states, represented as a core.async channel."
-  [init-state intent-chans intent-handlers]
-  (let [buf-or-n      10
-        amend-fn-chan (->> intent-chans
-                           (map (fn [[key ch]]
-                                  (when-let [intent-handler (key intent-handlers)]
-                                    (->> #(partial intent-handler %) ; fn
-                                         (map)                       ; xf
-                                         (chan buf-or-n)             ; ch
-                                         (pipe ch)))))               ; piped
-                           (remove nil?) ; only channel with handler
-                           (a/merge))
-        initial-chan  (to-chan [init-state])
-        states-chan   (->> (fn [state f] (f state)) ; fn
-                           (scan)                   ; xf
-                           (chan buf-or-n)          ; ch
-                           (pipe (chain [initial-chan amend-fn-chan])))]
-    states-chan))
+   :items [(new-item "get milk")
+           (-> (new-item "pay taxes")
+               (assoc :completed true))]})
 
 (defn model
   [init-state intent-chans]

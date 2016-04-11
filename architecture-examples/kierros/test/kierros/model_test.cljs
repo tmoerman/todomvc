@@ -1,6 +1,5 @@
-(ns todomvc-kierros.model-test
-  (:require [todomvc-kierros.model :refer [scan-to-states]]
-            [todomvc-kierros.intent :refer [intent-chan]]
+(ns kierros.model-test
+  (:require [kierros.model :refer [scan-to-states]]
             [cljs.core.async :as a :refer [<! >! close! chan to-chan]]
             [cljs.test :refer-macros [deftest is testing run-tests async]])
   (:require-macros [cljs.core.async.macros :refer [go]]))
