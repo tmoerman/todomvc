@@ -14,10 +14,6 @@
 
   :hooks [leiningen.cljsbuild]
 
-  ;; Note: it is not idiomatic to compile to, or serve from, the
-  ;; project root but TodoMVC wants the index.html there, so we'll
-  ;; adjust (dixit Quiescent)
-
   :clean-targets ^{:protect false} ["resources/public/js/compiled"
                                     "resources/private/js/compiled"
                                     "target"]
@@ -50,4 +46,5 @@
                                   [figwheel-sidecar        "0.5.1"]]
                    :repl-options {:nrepl-middleware [cemerick.piggieback/wrap-cljs-repl]}}}
 
-  :figwheel {:nrepl-port 7888})
+  :figwheel {:css-dirs ["resources/public/css"] ;; watch and update CSS
+             :nrepl-port 7888})
