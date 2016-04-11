@@ -1,13 +1,13 @@
 (ns todomvc-kierros.view
   (:require [cljs.core.async :as a :refer [>! chan pipe]]
-            [quiescent.core :as q :include-macros true]
+            [quiescent.core :as q :include-macros true :refer-macros [defcomponent]]
             [sablono.core :as s :refer-macros [html]])
   (:require-macros [cljs.core.async.macros :refer [go]]))
 
 (defn enter-key? [evt] (= 13 (.-keyCode evt)))
 
-(q/defcomponent Header
-  "Header component, contains the title and the todo input."
+(defcomponent Header
+  "The page's header, which includes the primary input"
   [state {:keys [add-item] :as intent-chans}]
   (html [:header {:id "header"}
          [:h1 {} "Kierros-todos"]
@@ -21,13 +21,54 @@
                                        (>! add-item v))
                                      (-> evt .-target .-value (set! "")))))}]]))
 
-(q/defcomponent Root
+(defn class-name [classes] (->> classes (remove nil?) (interpose " ") (apply str)))
+
+(defn hidden? [item filter] (or (and (= filter :active) (:completed item))
+                                (and (= filter :completed) (not (:completed item)))))
+
+(defcomponent Todo-item
+  :keyfn (fn [[_ item]] (:id item)) ;; don't put the react key in attribute map!
+  [[state item] intent-chans]
+  (let [done   (-> item :completed boolean)
+        filter (-> state :filter)
+        hidden (hidden? item filter)]
+    (html [:li {:className (class-name #{(when done "completed")
+                                         (when hidden "hidden")
+                                         (when (:editing item) "editing")})}
+           [:div {:className "view"}
+            [:label {} (:text item)]]])))
+
+(defcomponent Todo-list
   [state intent-chans]
-  (html [:div {:id "main"}
+  (html [:ul {:id "todo-list"}
+         (for [item (:items state)]
+           (Todo-item [state item] intent-chans))]))
+
+(defn count-label [rest] (str rest " item" (when (< 1 rest) "s") " left"))
+
+(defcomponent Footer
+  [state {:keys [clear-completed] :as intent-chans}]
+  (let [completed (->> state :items (filter :completed) count)
+        rest      (- (-> state :items count) completed)]
+    (html [:footer {:id "footer"}
+           [:span {:id "todo-count"} [:strong {} (count-label rest)]]
+           (when (pos? completed)
+             [:button {:id      "clear-completed"
+                       :onClick (fn [_] (go (>! clear-completed :clear)))}
+              (str "Clear completed (" completed ")")])])))
+
+(defcomponent Root
+  [state intent-chans]
+  (html [:div {}
          (Header state intent-chans)
-         [:ul {:id "todo-list"}
-          (->> (:items state)
-               (map (fn [i] [:li {} [:label {} (:text i)]])))]]))
+         [:section {:id "main"}
+          [:input {:id       "toggle-all"
+                   :type     "checkbox"
+                   :readOnly false
+                   :checked  true}]
+          [:label {:htmlFor "toggle-all"} "mark all as complete"]
+          (Todo-list state intent-chans)]
+         (Footer state intent-chans)]))
 
 (defn view
   "Returns a stream of view trees, represented as a core.async channel."
