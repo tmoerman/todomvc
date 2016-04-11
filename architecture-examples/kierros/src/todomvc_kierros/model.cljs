@@ -77,14 +77,13 @@
    :start-edit       start-edit
    :end-edit         end-edit})
 
-(defn init-state
-  "Returns a new initial application state."
-  []
+(def default-state
+  "Initial application state."
   {:filter :all
    :items [(new-item "get milk")
            (-> (new-item "pay taxes")
                (assoc :completed true))]})
 
 (defn model
-  [init-state intent-chans]
-  (scan-to-states init-state intent-chans intent-handlers))
+  [init-state-chan intent-chans]
+  (scan-to-states init-state-chan intent-chans intent-handlers))
