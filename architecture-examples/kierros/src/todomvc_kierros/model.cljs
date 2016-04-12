@@ -6,7 +6,13 @@
 
 ;; TODO implement state manipulation with Specter.
 
-(defn navigate [] :todo)
+(defn set-filter
+  [token state]
+  (println token)
+  (assoc state :filter (case token
+                         "/active"    :active
+                         "/completed" :completed
+                         :all)))
 
 (defn new-item
   "Construct a new item"
@@ -77,7 +83,7 @@
                                                            :text text)))))))
 
 (def intent-handlers
-  {:navigate         navigate
+  {:navigate         set-filter
    :add-item         add-item
    :drop-item        drop-item
    :clear-completed  clear-completed
