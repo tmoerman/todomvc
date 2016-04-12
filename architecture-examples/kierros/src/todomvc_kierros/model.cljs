@@ -43,13 +43,21 @@
                               (->> items
                                    (remove (fn [item] (-> item :completed true?)))))))
 
+(defn toggle [item] (assoc item :completed (not (:completed item))))
+
 (defn toggle-completed
   ""
   [id state]
   (update-in state [:items] (fn [items]
                               (->> items
-                                   (modify id (fn [item] (assoc item
-                                                           :completed (not (:completed item)))))))))
+                                   (modify id toggle)))))
+
+(defn toggle-all
+  ""
+  [_ state]
+  (update-in state [:items] (fn [items]
+                              (->> items
+                                   (map toggle)))))
 
 (defn start-edit
   ""
@@ -74,6 +82,7 @@
    :drop-item        drop-item
    :clear-completed  clear-completed
    :toggle-completed toggle-completed
+   :toggle-all       toggle-all
    :start-edit       start-edit
    :end-edit         end-edit})
 

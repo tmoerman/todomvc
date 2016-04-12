@@ -7,6 +7,7 @@
    :drop-item
    :clear-completed
    :toggle-completed
+   :toggle-all
    :start-edit
    :end-edit])
 
