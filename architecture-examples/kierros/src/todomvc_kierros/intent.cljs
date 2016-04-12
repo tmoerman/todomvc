@@ -13,7 +13,7 @@
 
 (defn intent-chan [] (chan (dropping-buffer 10)))
 
-(defn intents
+(defn intent
   "Returns a map of event channels."
   []
   (->> intent-keys
