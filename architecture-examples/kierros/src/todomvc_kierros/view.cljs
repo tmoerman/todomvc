@@ -21,6 +21,18 @@
                                        (>! add-item v))
                                      (-> evt .-target .-value (set! "")))))}]]))
 
+(defcomponent FocusingInput
+  :on-render (fn [node item _] (when (:editing item) (.focus node)))
+  [item {:keys [end-edit]}]
+  (html [:input {:className     "edit"
+                 :defaultValue  (:text item)
+                 :onKeyDown     (fn [evt] (when (enter-key? evt) (-> evt .-target .blur)))
+                 :onDoubleClick (fn [evt] (-> evt .-target .blur))
+                 :onBlur        (fn [evt]
+                                  (let [v (-> evt .-target .-value)]
+                                    (go (>! end-edit [(:id item) v]))))}]))
+
+
 (defn class-name [classes] (->> classes (remove nil?) (interpose " ") (apply str)))
 
 (defn hidden? [item filter] (or (and (= filter :active) (:completed item))
@@ -28,7 +40,7 @@
 
 (defcomponent Todo-item
   :keyfn (fn [[_ item]] (:id item)) ;; don't put the react key in attribute map!
-  [[state item] {:keys [toggle-completed drop-item] :as intent-chans}]
+  [[state item] {:keys [toggle-completed start-edit drop-item] :as intent-chans}]
   (let [done   (-> item :completed boolean)
         filter (-> state :filter)
         hidden (hidden? item filter)]
@@ -41,9 +53,11 @@
                      :checked   done
                      :readOnly  true
                      :onClick   (fn [_] (go (>! toggle-completed (:id item))))}]
-            [:label {} (:text item)]
+            [:label {:onDoubleClick (fn [_] (go (>! start-edit (:id item))))}
+             (:text item)]
             [:button {:className "destroy"
-                      :onClick   (fn [_] (go (>! drop-item (:id item))))}]]])))
+                      :onClick   (fn [_] (go (>! drop-item (:id item))))}]]
+           (FocusingInput item intent-chans)])))
 
 (defcomponent Todo-list
   [state intent-chans]
