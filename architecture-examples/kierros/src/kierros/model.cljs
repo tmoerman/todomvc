@@ -19,6 +19,6 @@
                            (a/merge))
         states-chan   (->> (fn [state f] (f state)) ; fn
                            (scan)                   ; xf
-                           (chan buf-or-n )          ; ch
+                           (chan buf-or-n)          ; ch
                            (pipe (chain [init-state-chan amend-fn-chan])))]
     states-chan))

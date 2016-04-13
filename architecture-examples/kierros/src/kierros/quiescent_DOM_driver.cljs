@@ -16,4 +16,4 @@
                  js/window
                  (fn [] (q/render view (.getElementById js/document container)))))
              (recur))
-    (chan)))
+    (chan))) ; For now not much is going on here. Dom event should be put on this chan.
