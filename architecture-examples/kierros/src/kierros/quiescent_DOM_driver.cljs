@@ -1,4 +1,4 @@
-(ns kierros.quiescent-DOM-driver
+(ns kierros.quiescent-dom-driver
   "Cycle DOM driver, powered by quiescent."
   (:require [cljs.core.async :refer [<! chan]]
             [quiescent.core :as q :include-macros true])

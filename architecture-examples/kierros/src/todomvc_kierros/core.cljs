@@ -6,20 +6,21 @@
             [todomvc-kierros.view   :as v]
             [kierros.core :as cycle]
             [kierros.history :as h]
-            [kierros.quiescent-DOM-driver :as dom]
+            [kierros.quiescent-dom-driver :as dom]
             [kierros.local-storage-driver :as lst]))
 
 (enable-console-print!)
 
 (defn on-js-reload [] (print "js reloaded" (js/Date.)))
 
-(defonce history-chan (h/init-history)) ; because of Figwheel reloading.
+(defonce history-mult (mult (h/init-history)))
 
 (defn todos-cycle-main
   "Cycle main."
   [{saved-state-chan :STORAGE}]
   (let [intent-chans (i/intent)
-        _            (pipe history-chan (:navigate intent-chans))
+        _            (a/untap-all history-mult) ; because of Figwheel reloading.
+        _            (tap history-mult (:navigate intent-chans))
         states-chan  (m/model saved-state-chan intent-chans)
         states-mult  (mult states-chan)
         view-states-chan   (->> (chan) (tap states-mult))
